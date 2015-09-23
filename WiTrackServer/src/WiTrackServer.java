@@ -6,6 +6,7 @@ public class WiTrackServer extends Thread {
 
 	private ServerSocket serverSocket;
 	int x = 100, y = 100, direction = 3;
+	int unit = 4;
 	
 	public WiTrackServer() throws IOException {
 		serverSocket = new ServerSocket(4444);
@@ -52,19 +53,14 @@ public class WiTrackServer extends Thread {
 	            x = 100;
 	            y = 100;
 	            while(true){
-	            	System.out.println(direction);
 		            if(canMoveRight(x, y, direction)) {
-		            	System.out.println("right");
-		            	moveRight(direction);
+		            	moveRight();
 		            } else if(canMoveForward(x,y, direction)){
-		            	System.out.println("forward");
-		            	moveForward(direction);
+		            	moveForward();
 		            } else if(canMoveLeft(x, y, direction)){
-		            	System.out.println("left");
-		            	moveLeft(direction);
+		            	moveLeft();
 		            } else if(canMoveBack(x, y, direction)){
-		            	System.out.println("back");
-		            	moveBack(direction);
+		            	moveBack();
 		            }
 		            System.out.println(x + " " + y);
 		            out.writeInt(x);
@@ -87,72 +83,72 @@ public class WiTrackServer extends Thread {
 		}
 	}
 	
-	public void moveRight(int direction) {
+	public void moveRight() {
 		switch(direction) {
 		case 0:
-			x = x + 1;
+			x = x + unit;
 			break;
 		case 1:
-			y =  y + 1;
+			y =  y + unit;
 			break;
 		case 2:
-			x = x - 1;
+			x = x - unit;
 			break;
 		case 3:
-			y = y - 1;
+			y = y - unit;
 			break;
 		}
 		direction = (direction + 1) % 4;
 	}
 	
-	public void moveForward(int direction) {
+	public void moveForward() {
 		switch(direction) {
 		case 0:
-			y = y - 1;
+			y = y - unit;
 			break;
 		case 1:
-			x = x + 1;
+			x = x + unit;
 			break;
 		case 2:
-			y = y + 1;
+			y = y + unit;
 			break;
 		case 3:
-			x = x - 1;
+			x = x - unit;
 			break;
 		}
 	}
 
-	public void moveLeft(int direction) {
+	public void moveLeft() {
 		switch(direction) {
 		case 0:
-			x = x - 1;
+			x = x - unit;
 			break;
 		case 1:
-			y = y - 1;
+			y = y - unit;
 			break;
 		case 2:
-			x = x + 1;
+			x = x + unit;
 			break;
 		case 3:
-			y = y + 1;
+			y = y + unit;
 			break;
 		}
 		direction = (direction + 3) % 4;
 	}
 
-	public void moveBack(int direction) {
+	public void moveBack() {
 		switch(direction) {
 		case 0:
-			y = y - 1;
+			y = y - unit;
 			break;
 		case 1:
-			x = x - 1;
+			x = x - unit;
 			break;
 		case 2:
-			y = y + 1;
+			y = y + unit;
 			break;
 		case 3:
-			x = x + 1;
+			x = x + unit;
 			break;
 		}
 		direction = (direction + 2) % 4;
