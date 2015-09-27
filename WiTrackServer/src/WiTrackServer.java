@@ -47,7 +47,9 @@ public class WiTrackServer extends Thread {
 	                  + server.getRemoteSocketAddress());
 	            DataInputStream in =
 	                  new DataInputStream(server.getInputStream());
-	            System.out.println(in.readUTF());
+	            String input = in.readUTF();
+	            InputStream response = new URL("http://witrackurop.azurewebsites.net/api/notification?key=" + input).openStream();
+            	System.out.println(response.read() + " From Website");
 	            DataOutputStream out =
 	                 new DataOutputStream(server.getOutputStream());
 	            x = 100;
@@ -157,13 +159,13 @@ public class WiTrackServer extends Thread {
 	public boolean canMoveRight(int x, int y, int direction) {
 		switch(direction) {
 		case 0:
-			return isValidLocation(x + 1, y);
+			return isValidLocation(x + unit, y);
 		case 1:
-			return isValidLocation(x, y + 1);
+			return isValidLocation(x, y + unit);
 		case 2:
-			return isValidLocation(x - 1, y);
+			return isValidLocation(x - unit, y);
 		case 3:
-			return isValidLocation(x, y - 1);
+			return isValidLocation(x, y - unit);
 		}
 		return true;
 	}
@@ -171,13 +173,13 @@ public class WiTrackServer extends Thread {
 	public boolean canMoveForward(int x, int y, int direction) {
 		switch(direction) {
 		case 0:
-			return isValidLocation(x, y - 1);
+			return isValidLocation(x, y - unit);
 		case 1:
-			return isValidLocation(x + 1, y);
+			return isValidLocation(x + unit, y);
 		case 2:
-			return isValidLocation(x, y + 1);
+			return isValidLocation(x, y + unit);
 		case 3:
-			return isValidLocation(x - 1, y);
+			return isValidLocation(x - unit, y);
 		}
 		return true;
 	}
@@ -185,13 +187,13 @@ public class WiTrackServer extends Thread {
 	public boolean canMoveLeft(int x, int y, int direction) {
 		switch(direction) {
 		case 0:
-			return isValidLocation(x - 1, y);
+			return isValidLocation(x - unit, y);
 		case 1:
-			return isValidLocation(x, y - 1);
+			return isValidLocation(x, y - unit);
 		case 2:
-			return isValidLocation(x + 1, y);
+			return isValidLocation(x + unit, y);
 		case 3:
-			return isValidLocation(x, y + 1);
+			return isValidLocation(x, y + unit);
 		}
 		return true;
 	}
@@ -199,13 +201,13 @@ public class WiTrackServer extends Thread {
 	public boolean canMoveBack(int x, int y, int direction) {
 		switch(direction) {
 		case 0:
-			return isValidLocation(x, y - 1);
+			return isValidLocation(x, y - unit);
 		case 1:
-			return isValidLocation(x - 1, y);
+			return isValidLocation(x - unit, y);
 		case 2:
-			return isValidLocation(x, y + 1);
+			return isValidLocation(x, y + unit);
 		case 3:
-			return isValidLocation(x + 1, y);
+			return isValidLocation(x + unit, y);
 		}
 		return true;
 	}
