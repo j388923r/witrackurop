@@ -1,39 +1,20 @@
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class WiTrackServer extends Thread {
 
 	private ServerSocket serverSocket;
+	String source = "Jamar's Computer";
 	int x = 100, y = 100, direction = 3;
 	int unit = 4;
 	
 	public WiTrackServer() throws IOException {
+		
 		serverSocket = new ServerSocket(4444);
-		/*try {
-            String host = "localhost";
-            int port = 9500;
-            String username = "admin";
-            String password = "abc123";
-
-            SMSClient osc = new SMSClient(host, port);
-            osc.login(username, password);
-            
-            String line = "Server started";
-
-            System.out.println("SMS message:");
-
-            if(osc.isLoggedIn()) {
-                    osc.sendMessage("+8323498362", line);
-                    osc.logout();
-            }
-	    } catch (IOException e) {
-	            System.out.println(e.toString());
-	            e.printStackTrace();
-	    } catch (InterruptedException e) {
-	            System.out.println(e.toString());
-	            e.printStackTrace();
-	    }*/
+		
 	}
 	
 	public void run() {
@@ -47,9 +28,16 @@ public class WiTrackServer extends Thread {
 	                  + server.getRemoteSocketAddress());
 	            DataInputStream in =
 	                  new DataInputStream(server.getInputStream());
-	            String input = in.readUTF();
-	            InputStream response = new URL("http://witrackurop.azurewebsites.net/api/notification?key=" + input).openStream();
-            	System.out.println(response.read() + " From Website");
+	            String[] inputs = in.readUTF().split(" ");
+	            String username = inputs[1];
+	            String password = inputs[3];
+	            String url = "http://witrackurop.azurewebsites.net/api/tempaccount";
+	    		
+	    	    String userID = in.readUTF().replaceAll("\"", "");
+	    	    System.out.println(userID);
+	    		
+	            InputStream notificationresponse = new URL("http://witrackurop.azurewebsites.net/api/notification?key=Userspecific&userID=" + userID).openStream();
+            	System.out.println(notificationresponse.read() + " From Website");
 	            DataOutputStream out =
 	                 new DataOutputStream(server.getOutputStream());
 	            x = 100;
@@ -69,7 +57,6 @@ public class WiTrackServer extends Thread {
 		            out.writeInt(y);
 		            Thread.sleep(200);
 	            }
-	            //server.close();
 	         }catch(SocketTimeoutException s)
 	         {
 	            System.out.println("Socket timed out!");
