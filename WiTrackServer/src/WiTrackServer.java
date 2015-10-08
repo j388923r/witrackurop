@@ -53,8 +53,8 @@ public class WiTrackServer extends Thread {
 		            	moveBack();
 		            }
 		            System.out.println(x + " " + y);
-		            out.writeInt(x);
-		            out.writeInt(y);
+		            out.writeInt(x + (int)(Math.random() * 5));
+		            out.writeInt(y + (int)(Math.random() * 5));
 		            Thread.sleep(200);
 	            }
 	         }catch(SocketTimeoutException s)
