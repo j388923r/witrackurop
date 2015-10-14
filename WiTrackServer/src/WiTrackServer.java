@@ -12,9 +12,7 @@ public class WiTrackServer extends Thread {
 	int unit = 4;
 	
 	public WiTrackServer() throws IOException {
-		
 		serverSocket = new ServerSocket(4444);
-		
 	}
 	
 	public void run() {
@@ -204,13 +202,28 @@ public class WiTrackServer extends Thread {
 	}
 	
 	public static void main(String args[]){
-		try
+		/*try
 	      {
 	         Thread t = new WiTrackServer();
 	         t.start();
 	      }catch(IOException e)
 	      {
 	         e.printStackTrace();
-	      }
+	      }*/
+		ServerSocket serverSocket;
+  		try {
+  			serverSocket = new ServerSocket(4444);
+  			System.out.println("Waiting for client on port " +
+  		            serverSocket.getLocalPort() + "...");
+			while(true) {
+	  			Socket socket = serverSocket.accept();
+	  			Thread socketThread = new Thread(new streamToClientWorker(socket));
+	  			socketThread.start();
+			}
+  		} catch(IOException ioe) {
+ 			ioe.printStackTrace();
+ 			//serverSocket.close();
+ 		}
+		 
 	}
 }
