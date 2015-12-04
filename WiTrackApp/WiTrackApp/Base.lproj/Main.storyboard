@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Anh-QW-NXq">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--WiTrackDataDisplay-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WiTrackApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="WiTrackDataDisplay" id="V8F-Q3-fRL">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="0Y4-Wh-6If">
+                            <connections>
+                                <action selector="LogoutButtonTap:" destination="BYZ-38-t0r" id="EWL-2D-LWw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="564" y="326"/>
+        </scene>
+        <!--Logout View Controller-->
+        <scene sceneID="xA7-rq-r5m">
+            <objects>
+                <viewController storyboardIdentifier="LogoutViewController" id="mm7-VU-6wg" customClass="LogoutViewController" customModule="WiTrackApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jb2-Ou-8kY"/>
+                        <viewControllerLayoutGuide type="bottom" id="QoA-Ba-hiE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="W2u-kf-U6q">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You have successfully logged out" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="118-Xy-Qub">
+                                <rect key="frame" x="20" y="66" width="280" height="38"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uo9-ps-O7F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="932" y="326"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="alt-bP-TdZ">
+            <objects>
+                <pageViewController storyboardIdentifier="MyPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="ubf-ZV-UOV" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y3u-8b-u04" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1307" y="326"/>
+        </scene>
+        <!--Position View Controller-->
+        <scene sceneID="dGy-Lb-Z3X">
+            <objects>
+                <viewController storyboardIdentifier="PosViewController" id="hof-dy-xWs" customClass="PositionViewController" customModule="WiTrackApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CGz-ev-p24"/>
+                        <viewControllerLayoutGuide type="bottom" id="ewm-jK-qka"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZX9-yJ-sFW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D0S-9q-z58" customClass="DrawingCanvas" customModule="WiTrackApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="468"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U8f-sq-k2u">
+                                <rect key="frame" x="168" y="476" width="107" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Corner Marking"/>
+                                <connections>
+                                    <action selector="Secondary:" destination="hof-dy-xWs" eventType="touchUpInside" id="D3c-HM-RDG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZj-dp-6nl">
+                                <rect key="frame" x="33" y="476" width="55" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="FqH-1H-Dgj"/>
+                                </constraints>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="StartStop:" destination="hof-dy-xWs" eventType="touchUpInside" id="N54-J4-MMl"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="D0S-9q-z58" firstAttribute="leading" secondItem="ZX9-yJ-sFW" secondAttribute="leading" id="3FD-iR-f3S"/>
+                            <constraint firstItem="IZj-dp-6nl" firstAttribute="top" secondItem="D0S-9q-z58" secondAttribute="bottom" constant="8" symbolic="YES" id="8gj-77-Njf"/>
+                            <constraint firstItem="IZj-dp-6nl" firstAttribute="baseline" secondItem="U8f-sq-k2u" secondAttribute="baseline" id="BoR-W7-Cr4"/>
+                            <constraint firstItem="IZj-dp-6nl" firstAttribute="leading" secondItem="ZX9-yJ-sFW" secondAttribute="leadingMargin" constant="17" id="au6-zn-m9R"/>
+                            <constraint firstItem="U8f-sq-k2u" firstAttribute="leading" secondItem="IZj-dp-6nl" secondAttribute="trailing" constant="80" id="hma-Wh-MQA"/>
+                            <constraint firstAttribute="trailing" secondItem="D0S-9q-z58" secondAttribute="trailing" id="ifG-X8-U6L"/>
+                            <constraint firstItem="ewm-jK-qka" firstAttribute="top" secondItem="IZj-dp-6nl" secondAttribute="bottom" constant="62" id="iyo-lE-ond"/>
+                            <constraint firstItem="D0S-9q-z58" firstAttribute="top" secondItem="ZX9-yJ-sFW" secondAttribute="top" id="tuv-5P-AXF"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="canvas" destination="D0S-9q-z58" id="wME-aH-leG"/>
+                        <outlet property="primary" destination="IZj-dp-6nl" id="J2f-jY-thV"/>
+                        <outlet property="secondary" destination="U8f-sq-k2u" id="KiG-ge-KYm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a3Q-7V-Tyc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1648" y="326"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="VDb-Ir-Evz">
+            <objects>
+                <viewController storyboardIdentifier="HeightViewController" id="CZ1-MU-CIf" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qoG-Tp-yXd"/>
+                        <viewControllerLayoutGuide type="bottom" id="SRj-15-IbE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BQt-MI-cFH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n5y-BH-agI">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.84737674520069806" green="0.84737674520069806" blue="0.84737674520069806" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="n5y-BH-agI" firstAttribute="bottom" secondItem="SRj-15-IbE" secondAttribute="top" id="VF3-TQ-6KP"/>
+                            <constraint firstItem="n5y-BH-agI" firstAttribute="leading" secondItem="BQt-MI-cFH" secondAttribute="leading" id="Wnp-lO-Uy5"/>
+                            <constraint firstItem="n5y-BH-agI" firstAttribute="top" secondItem="BQt-MI-cFH" secondAttribute="top" id="nOF-i5-8d6"/>
+                            <constraint firstAttribute="trailing" secondItem="n5y-BH-agI" secondAttribute="trailing" id="nXP-Wa-Nko"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kQZ-ET-6nG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1648" y="956"/>
+        </scene>
+        <!--Display Only View Controller-->
+        <scene sceneID="TG0-1P-yZ6">
+            <objects>
+                <viewController storyboardIdentifier="DisplayOnlyViewController" id="FvV-oh-nMz" customClass="DisplayOnlyViewController" customModule="WiTrackApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bRP-XM-Xb2"/>
+                        <viewControllerLayoutGuide type="bottom" id="Azk-Hl-foW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oL9-4H-qZr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Abp-LZ-48K" customClass="DrawingCanvas" customModule="WiTrackApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0093259162303664933" green="0.0093259162303664933" blue="0.0093259162303664933" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Abp-LZ-48K" firstAttribute="bottom" secondItem="Azk-Hl-foW" secondAttribute="top" id="DXH-K5-Lon"/>
+                            <constraint firstItem="Abp-LZ-48K" firstAttribute="leading" secondItem="oL9-4H-qZr" secondAttribute="leading" id="hIh-Wu-rBr"/>
+                            <constraint firstAttribute="trailing" secondItem="Abp-LZ-48K" secondAttribute="trailing" id="pgI-X1-02S"/>
+                            <constraint firstItem="Abp-LZ-48K" firstAttribute="top" secondItem="oL9-4H-qZr" secondAttribute="top" id="roN-jH-vV6"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="canvas" destination="Abp-LZ-48K" id="Q1f-1F-RxC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8L7-Kg-U76" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1648" y="-306"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="wG0-nG-Fn5">
+            <objects>
+                <viewController id="Anh-QW-NXq" customClass="LoginViewController" customModule="WiTrackApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="a8D-Zt-o1m"/>
+                        <viewControllerLayoutGuide type="bottom" id="yeX-Eh-nMx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SNG-GF-ABF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s70-C2-aoP">
+                                <rect key="frame" x="43" y="172" width="216" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sAC-0U-tDd">
+                                <rect key="frame" x="43" y="210" width="216" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l1Y-HB-15O">
+                                <rect key="frame" x="43" y="248" width="216" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <segue destination="X2D-5x-Jh1" kind="show" id="g2D-Gc-LRk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="l1Y-HB-15O" firstAttribute="leading" secondItem="sAC-0U-tDd" secondAttribute="leading" id="03N-Dg-uWe"/>
+                            <constraint firstItem="s70-C2-aoP" firstAttribute="leading" secondItem="SNG-GF-ABF" secondAttribute="leadingMargin" constant="27" id="18j-iH-FEZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="s70-C2-aoP" secondAttribute="trailing" constant="45" id="19l-if-qHF"/>
+                            <constraint firstItem="sAC-0U-tDd" firstAttribute="top" secondItem="s70-C2-aoP" secondAttribute="bottom" constant="8" symbolic="YES" id="47F-PF-L0j"/>
+                            <constraint firstItem="s70-C2-aoP" firstAttribute="leading" secondItem="sAC-0U-tDd" secondAttribute="leading" id="Qs4-rJ-HpC"/>
+                            <constraint firstItem="l1Y-HB-15O" firstAttribute="top" secondItem="sAC-0U-tDd" secondAttribute="bottom" constant="8" symbolic="YES" id="U3D-q2-J9f"/>
+                            <constraint firstItem="s70-C2-aoP" firstAttribute="trailing" secondItem="sAC-0U-tDd" secondAttribute="trailing" id="bEM-sS-pZT"/>
+                            <constraint firstItem="s70-C2-aoP" firstAttribute="top" secondItem="a8D-Zt-o1m" secondAttribute="bottom" constant="152" id="hWg-mp-QU1"/>
+                            <constraint firstItem="l1Y-HB-15O" firstAttribute="trailing" secondItem="sAC-0U-tDd" secondAttribute="trailing" id="qOS-Ma-C2E"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="password" destination="sAC-0U-tDd" id="C2N-5z-nJc"/>
+                        <outlet property="username" destination="s70-C2-aoP" id="x3x-b2-3Vb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xbC-EB-0gy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="591" y="-985"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bNj-gp-oeH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X2D-5x-Jh1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ycb-LW-q7d">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="U5E-9m-3RO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gab-tc-mkm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="188" y="-385"/>
+        </scene>
+    </scenes>
+</document>
