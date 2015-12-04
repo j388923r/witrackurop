@@ -1,17 +1,15 @@
 //
-//  LoginViewController.swift
+//  HeightViewController.swift
 //  WiTrackApp
 //
-//  Created by Jamar on 11/30/15.
+//  Created by Jamar Brooks on 12/2/15.
 //  Copyright © 2015 Jamar. All rights reserved.
 //
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class HeightViewController: UIViewController {
 
-    @IBOutlet weak var username: UITextField!
-    @IBOutlet weak var password: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,16 +22,14 @@ class LoginViewController: UIViewController {
     }
     
 
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let destinationController = segue.destinationViewController as! UINavigationController
-        let internalViewController = destinationController.topViewController as! ViewController
-        internalViewController.username = username.text
-        internalViewController.password = password.text
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
-
+    */
 
 }

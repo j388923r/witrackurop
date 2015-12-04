@@ -15,8 +15,10 @@ class PositionViewController: UIViewController, NSStreamDelegate {
     var ipAddress : String?
     var points : [(x:Float, y:Float)]?
     var positions : [Position]?
-    var currentPoint : (x: Float, y: Float)?
-    var socket = SocketIOClient(socketURL: "http://ec2-52-91-83-213.compute-1.amazonaws.com")
+    var currentPoint : (x: Float, y: Float, personId: Int)?
+    var socket : SocketIOClient?
+    
+    var colorWheel : [UIColor] = [UIColor.purpleColor(), UIColor.redColor(), UIColor.grayColor(), UIColor.greenColor(), UIColor.blackColor(), UIColor.blueColor(), UIColor.brownColor(), UIColor.cyanColor(), UIColor.yellowColor(), UIColor.orangeColor(), UIColor.magentaColor(), UIColor.lightGrayColor(), UIColor.darkGrayColor()]
     
     @IBOutlet weak var canvas: DrawingCanvas!
     @IBOutlet weak var primary: UIButton!
@@ -31,13 +33,9 @@ class PositionViewController: UIViewController, NSStreamDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         points = []
-        
-        self.title = "Calibration View"
-        
-        socketConnect("ipAddress!")
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,7 +47,7 @@ class PositionViewController: UIViewController, NSStreamDelegate {
         print(primary.titleLabel!.text!)
         if (primary.titleLabel!.text! == "Start") {
             tracking = true
-            record( currentPoint!.x, y: currentPoint!.y)
+            record( currentPoint!.x, y: currentPoint!.y, personId: currentPoint!.personId)
             primary.setTitle("Stop", forState: UIControlState.Normal)
             if (recordingMode == 0) {
                 secondary.setTitle("Record", forState: UIControlState.Normal)
@@ -76,7 +74,7 @@ class PositionViewController: UIViewController, NSStreamDelegate {
             if (secondary.titleLabel!.text! == "Record") {
                 tracking = true
                 secondary.setTitle("Pause Recording", forState: UIControlState.Normal)
-                record( currentPoint!.x, y: currentPoint!.y)
+                record( currentPoint!.x, y: currentPoint!.y, personId: currentPoint!.personId)
             } else {
                 tracking = false
                 secondary.setTitle("Record", forState: UIControlState.Normal)
@@ -84,50 +82,25 @@ class PositionViewController: UIViewController, NSStreamDelegate {
         }
     }
     
-    func record(x : Float, y : Float) {
+    func record(x : Float, y : Float, personId : Int) {
+        print("recording")
         if (tracking) {
-            canvas.move((x: x, y: y))
+            canvas.move((x: x, y: y, color: UIColor.redColor()), personId: personId)
             points!.append((x: x, y: y))
-            currentPoint = (x: x, y: y)
+            currentPoint = (x: x, y: y, personId)
             if (recordingMode == 0) {
                 tracking = false
                 secondary.setTitle("Record", forState: UIControlState.Normal)
             }
         } else {
-            canvas.moveSilently((x: x, y: y))
-            currentPoint = (x: x, y: y)
+            canvas.moveSilently((x: x, y: y, color: UIColor.greenColor()), personId: personId)
+            currentPoint = (x: x, y: y, personId)
         }
         
     }
     
     var inputStream : NSInputStream?
     var outputStream : NSOutputStream?
-    
-    func socketConnect(token:NSString) {
-        
-        self.socket.on("connect") {data, ack in
-            print("socket connected")
-        }
-        
-        self.socket.on("positions") {data, ack in
-            print(data.count)
-            let personList = data[0]
-            let person = personList[0]! as! NSMutableDictionary
-            print(person.allKeys)
-            print(person["y"]! as! Float)
-            print(person["deviceId"]! as! Int)
-            print(person["timestamp"]! as! String)
-            let currentPosition = Position(x: person["x"]! as! Float, y: person["y"]! as! Float, z: person["z"]! as! Float, timestamp: person["timestamp"]! as! String, deviceId: person["deviceId"]! as! Int, personId: person["personId"]! as! Int)
-            self.record((currentPosition.x! - self.minX) * 300 / (self.maxX - self.minX), y: (currentPosition.y! - self.minY) * 600 / (self.maxY - self.minY))
-        }
-        
-        self.socket.on("boundary") {[weak self] data, ack in
-            print(data);
-            // let bounds = data[0];
-        }
-        
-        self.socket.connect()
-    }
     
     /*
     // MARK: - Navigation

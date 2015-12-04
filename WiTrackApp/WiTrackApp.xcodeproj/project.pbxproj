@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2842ECD21C0CCCA8003F2F65 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2842ECD11C0CCCA8003F2F65 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		2842ECD41C0CCE14003F2F65 /* DisplayOnlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2842ECD31C0CCE14003F2F65 /* DisplayOnlyViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		2842ECD21C0CCCA8003F2F65 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2842ECD11C0CCCA8003F2F65 /* LoginViewController.swift */; };
+		2842ECD41C0CCE14003F2F65 /* DisplayOnlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2842ECD31C0CCE14003F2F65 /* DisplayOnlyViewController.swift */; };
 		287894661C0A6579003E7445 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287894651C0A6579003E7445 /* AppDelegate.swift */; };
 		287894681C0A6579003E7445 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287894671C0A6579003E7445 /* ViewController.swift */; };
 		2878946B1C0A6579003E7445 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 287894691C0A6579003E7445 /* Main.storyboard */; };
@@ -18,12 +18,12 @@
 		287894861C0A6579003E7445 /* WiTrackAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287894851C0A6579003E7445 /* WiTrackAppUITests.swift */; };
 		287894991C0A674E003E7445 /* libicucore.A.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 287894971C0A674E003E7445 /* libicucore.A.tbd */; };
 		2878949A1C0A674E003E7445 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 287894981C0A674E003E7445 /* libicucore.tbd */; };
-		2878949C1C0B6F4E003E7445 /* DrawingCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2878949B1C0B6F4E003E7445 /* DrawingCanvas.swift */; settings = {ASSET_TAGS = (); }; };
-		2878949E1C0B6F55003E7445 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2878949D1C0B6F55003E7445 /* Position.swift */; settings = {ASSET_TAGS = (); }; };
-		287894A01C0B7047003E7445 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2878949F1C0B7047003E7445 /* LogoutViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		287894A21C0B744C003E7445 /* PositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287894A11C0B744C003E7445 /* PositionViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		287894A41C0B74B6003E7445 /* SocketIO-iOS in Resources */ = {isa = PBXBuildFile; fileRef = 287894A31C0B74B6003E7445 /* SocketIO-iOS */; settings = {ASSET_TAGS = (); }; };
-		287894A61C0B74C6003E7445 /* SocketIOClientSwift in Resources */ = {isa = PBXBuildFile; fileRef = 287894A51C0B74C6003E7445 /* SocketIOClientSwift */; settings = {ASSET_TAGS = (); }; };
+		2878949C1C0B6F4E003E7445 /* DrawingCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2878949B1C0B6F4E003E7445 /* DrawingCanvas.swift */; };
+		2878949E1C0B6F55003E7445 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2878949D1C0B6F55003E7445 /* Position.swift */; };
+		287894A01C0B7047003E7445 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2878949F1C0B7047003E7445 /* LogoutViewController.swift */; };
+		287894A21C0B744C003E7445 /* PositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287894A11C0B744C003E7445 /* PositionViewController.swift */; };
+		287894A41C0B74B6003E7445 /* SocketIO-iOS in Resources */ = {isa = PBXBuildFile; fileRef = 287894A31C0B74B6003E7445 /* SocketIO-iOS */; };
+		287894A61C0B74C6003E7445 /* SocketIOClientSwift in Resources */ = {isa = PBXBuildFile; fileRef = 287894A51C0B74C6003E7445 /* SocketIOClientSwift */; };
 		287894BB1C0B7591003E7445 /* SocketAckEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287894A81C0B7591003E7445 /* SocketAckEmitter.swift */; };
 		287894BC1C0B7591003E7445 /* SocketAckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287894A91C0B7591003E7445 /* SocketAckManager.swift */; };
 		287894BD1C0B7591003E7445 /* SocketAnyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287894AA1C0B7591003E7445 /* SocketAnyEvent.swift */; };
@@ -43,6 +43,7 @@
 		287894CB1C0B7591003E7445 /* SocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287894B81C0B7591003E7445 /* SocketTypes.swift */; };
 		287894CC1C0B7591003E7445 /* SwiftRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287894B91C0B7591003E7445 /* SwiftRegex.swift */; };
 		287894CD1C0B7591003E7445 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287894BA1C0B7591003E7445 /* WebSocket.swift */; };
+		463853991C0FD84500CB158B /* HeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463853981C0FD84500CB158B /* HeightViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		287894B81C0B7591003E7445 /* SocketTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocketTypes.swift; path = WiTrackApp/SocketIOClientSwift/SocketTypes.swift; sourceTree = "<group>"; };
 		287894B91C0B7591003E7445 /* SwiftRegex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SwiftRegex.swift; path = WiTrackApp/SocketIOClientSwift/SwiftRegex.swift; sourceTree = "<group>"; };
 		287894BA1C0B7591003E7445 /* WebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WebSocket.swift; path = WiTrackApp/SocketIOClientSwift/WebSocket.swift; sourceTree = "<group>"; };
+		463853981C0FD84500CB158B /* HeightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 				287894A11C0B744C003E7445 /* PositionViewController.swift */,
 				2842ECD11C0CCCA8003F2F65 /* LoginViewController.swift */,
 				2842ECD31C0CCE14003F2F65 /* DisplayOnlyViewController.swift */,
+				463853981C0FD84500CB158B /* HeightViewController.swift */,
 			);
 			path = WiTrackApp;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				287894BD1C0B7591003E7445 /* SocketAnyEvent.swift in Sources */,
 				287894BE1C0B7591003E7445 /* SocketEngine.swift in Sources */,
 				287894BF1C0B7591003E7445 /* SocketEngineClient.swift in Sources */,
+				463853991C0FD84500CB158B /* HeightViewController.swift in Sources */,
 				287894C01C0B7591003E7445 /* SocketEnginePacketType.swift in Sources */,
 				287894C11C0B7591003E7445 /* SocketEngineSpec.swift in Sources */,
 				287894C21C0B7591003E7445 /* SocketEventHandler.swift in Sources */,

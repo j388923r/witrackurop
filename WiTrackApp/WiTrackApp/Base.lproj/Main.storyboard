@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Anh-QW-NXq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Anh-QW-NXq">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -82,42 +82,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D0S-9q-z58" customClass="DrawingCanvas" customModule="WiTrackApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="468"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D0S-9q-z58" customClass="DrawingCanvas" customModule="WiTrackApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="522"/>
                                 <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U8f-sq-k2u">
-                                <rect key="frame" x="168" y="476" width="107" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Corner Marking"/>
-                                <connections>
-                                    <action selector="Secondary:" destination="hof-dy-xWs" eventType="touchUpInside" id="D3c-HM-RDG"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZj-dp-6nl">
-                                <rect key="frame" x="33" y="476" width="55" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZj-dp-6nl">
+                                <rect key="frame" x="32" y="530" width="55" height="30"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="55" id="FqH-1H-Dgj"/>
+                                    <constraint firstAttribute="width" constant="55" id="Y7c-0W-msS"/>
                                 </constraints>
                                 <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="StartStop:" destination="hof-dy-xWs" eventType="touchUpInside" id="N54-J4-MMl"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U8f-sq-k2u">
+                                <rect key="frame" x="167" y="530" width="107" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Corner Marking"/>
+                                <connections>
+                                    <action selector="Secondary:" destination="hof-dy-xWs" eventType="touchUpInside" id="D3c-HM-RDG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="D0S-9q-z58" firstAttribute="leading" secondItem="ZX9-yJ-sFW" secondAttribute="leading" id="3FD-iR-f3S"/>
-                            <constraint firstItem="IZj-dp-6nl" firstAttribute="top" secondItem="D0S-9q-z58" secondAttribute="bottom" constant="8" symbolic="YES" id="8gj-77-Njf"/>
-                            <constraint firstItem="IZj-dp-6nl" firstAttribute="baseline" secondItem="U8f-sq-k2u" secondAttribute="baseline" id="BoR-W7-Cr4"/>
-                            <constraint firstItem="IZj-dp-6nl" firstAttribute="leading" secondItem="ZX9-yJ-sFW" secondAttribute="leadingMargin" constant="17" id="au6-zn-m9R"/>
-                            <constraint firstItem="U8f-sq-k2u" firstAttribute="leading" secondItem="IZj-dp-6nl" secondAttribute="trailing" constant="80" id="hma-Wh-MQA"/>
-                            <constraint firstAttribute="trailing" secondItem="D0S-9q-z58" secondAttribute="trailing" id="ifG-X8-U6L"/>
-                            <constraint firstItem="ewm-jK-qka" firstAttribute="top" secondItem="IZj-dp-6nl" secondAttribute="bottom" constant="62" id="iyo-lE-ond"/>
-                            <constraint firstItem="D0S-9q-z58" firstAttribute="top" secondItem="ZX9-yJ-sFW" secondAttribute="top" id="tuv-5P-AXF"/>
+                            <constraint firstItem="IZj-dp-6nl" firstAttribute="baseline" secondItem="U8f-sq-k2u" secondAttribute="baseline" id="KcZ-jl-3sN"/>
+                            <constraint firstItem="D0S-9q-z58" firstAttribute="top" secondItem="ZX9-yJ-sFW" secondAttribute="top" id="QDl-LQ-UVB"/>
+                            <constraint firstItem="IZj-dp-6nl" firstAttribute="top" secondItem="D0S-9q-z58" secondAttribute="bottom" constant="8" symbolic="YES" id="X4N-sc-mRr"/>
+                            <constraint firstItem="D0S-9q-z58" firstAttribute="leading" secondItem="ZX9-yJ-sFW" secondAttribute="leading" id="diT-Qo-0wZ"/>
+                            <constraint firstAttribute="trailing" secondItem="D0S-9q-z58" secondAttribute="trailing" id="gDT-ct-N0J"/>
+                            <constraint firstItem="IZj-dp-6nl" firstAttribute="leading" secondItem="ZX9-yJ-sFW" secondAttribute="leadingMargin" constant="12" id="hNv-Lp-9hy"/>
+                            <constraint firstItem="U8f-sq-k2u" firstAttribute="leading" secondItem="IZj-dp-6nl" secondAttribute="trailing" constant="80" id="mRR-fE-bek"/>
+                            <constraint firstAttribute="bottom" secondItem="U8f-sq-k2u" secondAttribute="bottom" constant="20" symbolic="YES" id="uA1-0j-jYJ"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -131,10 +131,10 @@
             </objects>
             <point key="canvasLocation" x="1648" y="326"/>
         </scene>
-        <!--View Controller-->
+        <!--Height View Controller-->
         <scene sceneID="VDb-Ir-Evz">
             <objects>
-                <viewController storyboardIdentifier="HeightViewController" id="CZ1-MU-CIf" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HeightViewController" id="CZ1-MU-CIf" customClass="HeightViewController" customModule="WiTrackApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qoG-Tp-yXd"/>
                         <viewControllerLayoutGuide type="bottom" id="SRj-15-IbE"/>
@@ -179,7 +179,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Abp-LZ-48K" customClass="DrawingCanvas" customModule="WiTrackApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.0093259162303664933" green="0.0093259162303664933" blue="0.0093259162303664933" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <animations/>
