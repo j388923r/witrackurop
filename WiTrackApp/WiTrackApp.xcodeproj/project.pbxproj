@@ -44,6 +44,16 @@
 		287894CC1C0B7591003E7445 /* SwiftRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287894B91C0B7591003E7445 /* SwiftRegex.swift */; };
 		287894CD1C0B7591003E7445 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287894BA1C0B7591003E7445 /* WebSocket.swift */; };
 		463853991C0FD84500CB158B /* HeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463853981C0FD84500CB158B /* HeightViewController.swift */; };
+		4638539B1C116DE400CB158B /* DeviceSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4638539A1C116DE400CB158B /* DeviceSelectorViewController.swift */; };
+		46F377951C12027100621F79 /* SignInInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F377941C12027100621F79 /* SignInInfo.swift */; };
+		46F3779A1C12225E00621F79 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F377981C12225E00621F79 /* Alamofire.framework */; };
+		46F3779B1C12225E00621F79 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F377991C12225E00621F79 /* SwiftyJSON.framework */; };
+		46F3779E1C165E1200621F79 /* LoginSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F3779D1C165E1200621F79 /* LoginSegue.swift */; };
+		46F377A01C1675CA00621F79 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F3779F1C1675CA00621F79 /* Device.swift */; };
+		46F377A21C16897800621F79 /* DeviceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F377A11C16897800621F79 /* DeviceCell.swift */; };
+		46F377A81C17814B00621F79 /* AddDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F377A71C17814B00621F79 /* AddDeviceViewController.swift */; };
+		46F377AA1C18ED1500621F79 /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F377A91C18ED1500621F79 /* UserObject.swift */; };
+		46F378191C28728300621F79 /* emerald.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F378181C28728300621F79 /* emerald.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +117,17 @@
 		287894B91C0B7591003E7445 /* SwiftRegex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SwiftRegex.swift; path = WiTrackApp/SocketIOClientSwift/SwiftRegex.swift; sourceTree = "<group>"; };
 		287894BA1C0B7591003E7445 /* WebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WebSocket.swift; path = WiTrackApp/SocketIOClientSwift/WebSocket.swift; sourceTree = "<group>"; };
 		463853981C0FD84500CB158B /* HeightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightViewController.swift; sourceTree = "<group>"; };
+		4638539A1C116DE400CB158B /* DeviceSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceSelectorViewController.swift; sourceTree = "<group>"; };
+		46F377941C12027100621F79 /* SignInInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInInfo.swift; sourceTree = "<group>"; };
+		46F377961C12223700621F79 /* Carthage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Carthage; path = WiTrackApp/Carthage; sourceTree = "<group>"; };
+		46F377981C12225E00621F79 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = WiTrackApp/Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		46F377991C12225E00621F79 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = WiTrackApp/Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		46F3779D1C165E1200621F79 /* LoginSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSegue.swift; sourceTree = "<group>"; };
+		46F3779F1C1675CA00621F79 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		46F377A11C16897800621F79 /* DeviceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceCell.swift; sourceTree = "<group>"; };
+		46F377A71C17814B00621F79 /* AddDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceViewController.swift; sourceTree = "<group>"; };
+		46F377A91C18ED1500621F79 /* UserObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
+		46F378181C28728300621F79 /* emerald.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = emerald.png; path = Assets.xcassets/emerald.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +135,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46F3779A1C12225E00621F79 /* Alamofire.framework in Frameworks */,
+				46F3779B1C12225E00621F79 /* SwiftyJSON.framework in Frameworks */,
 				287894991C0A674E003E7445 /* libicucore.A.tbd in Frameworks */,
 				2878949A1C0A674E003E7445 /* libicucore.tbd in Frameworks */,
 			);
@@ -139,6 +162,9 @@
 		287894591C0A6579003E7445 = {
 			isa = PBXGroup;
 			children = (
+				46F377981C12225E00621F79 /* Alamofire.framework */,
+				46F377991C12225E00621F79 /* SwiftyJSON.framework */,
+				46F377961C12223700621F79 /* Carthage */,
 				287894A81C0B7591003E7445 /* SocketAckEmitter.swift */,
 				287894A91C0B7591003E7445 /* SocketAckManager.swift */,
 				287894AA1C0B7591003E7445 /* SocketAnyEvent.swift */,
@@ -182,19 +208,27 @@
 			children = (
 				287894A51C0B74C6003E7445 /* SocketIOClientSwift */,
 				287894A31C0B74B6003E7445 /* SocketIO-iOS */,
-				2878949D1C0B6F55003E7445 /* Position.swift */,
-				2878949B1C0B6F4E003E7445 /* DrawingCanvas.swift */,
 				287894651C0A6579003E7445 /* AppDelegate.swift */,
 				287894671C0A6579003E7445 /* ViewController.swift */,
 				287894691C0A6579003E7445 /* Main.storyboard */,
+				46F378181C28728300621F79 /* emerald.png */,
 				2878946C1C0A6579003E7445 /* Assets.xcassets */,
 				2878946E1C0A6579003E7445 /* LaunchScreen.storyboard */,
-				287894711C0A6579003E7445 /* Info.plist */,
-				2878949F1C0B7047003E7445 /* LogoutViewController.swift */,
-				287894A11C0B744C003E7445 /* PositionViewController.swift */,
 				2842ECD11C0CCCA8003F2F65 /* LoginViewController.swift */,
+				4638539A1C116DE400CB158B /* DeviceSelectorViewController.swift */,
 				2842ECD31C0CCE14003F2F65 /* DisplayOnlyViewController.swift */,
+				287894A11C0B744C003E7445 /* PositionViewController.swift */,
 				463853981C0FD84500CB158B /* HeightViewController.swift */,
+				46F3779D1C165E1200621F79 /* LoginSegue.swift */,
+				46F377A11C16897800621F79 /* DeviceCell.swift */,
+				2878949B1C0B6F4E003E7445 /* DrawingCanvas.swift */,
+				2878949F1C0B7047003E7445 /* LogoutViewController.swift */,
+				287894711C0A6579003E7445 /* Info.plist */,
+				2878949D1C0B6F55003E7445 /* Position.swift */,
+				46F3779F1C1675CA00621F79 /* Device.swift */,
+				46F377941C12027100621F79 /* SignInInfo.swift */,
+				46F377A71C17814B00621F79 /* AddDeviceViewController.swift */,
+				46F377A91C18ED1500621F79 /* UserObject.swift */,
 			);
 			path = WiTrackApp;
 			sourceTree = "<group>";
@@ -227,6 +261,7 @@
 				2878945E1C0A6579003E7445 /* Sources */,
 				2878945F1C0A6579003E7445 /* Frameworks */,
 				287894601C0A6579003E7445 /* Resources */,
+				46F3779C1C12228300621F79 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -320,6 +355,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46F378191C28728300621F79 /* emerald.png in Resources */,
 				287894701C0A6579003E7445 /* LaunchScreen.storyboard in Resources */,
 				287894A41C0B74B6003E7445 /* SocketIO-iOS in Resources */,
 				2878946D1C0A6579003E7445 /* Assets.xcassets in Resources */,
@@ -344,6 +380,24 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		46F3779C1C12228300621F79 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/WiTrackApp/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/WiTrackApp/Carthage/Build/iOS/SwiftyJSON.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "    ";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2878945E1C0A6579003E7445 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -357,11 +411,16 @@
 				463853991C0FD84500CB158B /* HeightViewController.swift in Sources */,
 				287894C01C0B7591003E7445 /* SocketEnginePacketType.swift in Sources */,
 				287894C11C0B7591003E7445 /* SocketEngineSpec.swift in Sources */,
+				46F377A21C16897800621F79 /* DeviceCell.swift in Sources */,
 				287894C21C0B7591003E7445 /* SocketEventHandler.swift in Sources */,
 				287894C31C0B7591003E7445 /* SocketFixUTF8.swift in Sources */,
 				287894C41C0B7591003E7445 /* SocketIOClient.swift in Sources */,
+				46F377951C12027100621F79 /* SignInInfo.swift in Sources */,
 				287894C51C0B7591003E7445 /* SocketIOClientOption.swift in Sources */,
 				287894C61C0B7591003E7445 /* SocketIOClientStatus.swift in Sources */,
+				46F377AA1C18ED1500621F79 /* UserObject.swift in Sources */,
+				4638539B1C116DE400CB158B /* DeviceSelectorViewController.swift in Sources */,
+				46F377A81C17814B00621F79 /* AddDeviceViewController.swift in Sources */,
 				287894C71C0B7591003E7445 /* SocketLogger.swift in Sources */,
 				287894C81C0B7591003E7445 /* SocketPacket.swift in Sources */,
 				287894C91C0B7591003E7445 /* SocketParser.swift in Sources */,
@@ -370,10 +429,12 @@
 				287894CC1C0B7591003E7445 /* SwiftRegex.swift in Sources */,
 				287894CD1C0B7591003E7445 /* WebSocket.swift in Sources */,
 				287894681C0A6579003E7445 /* ViewController.swift in Sources */,
+				46F377A01C1675CA00621F79 /* Device.swift in Sources */,
 				287894661C0A6579003E7445 /* AppDelegate.swift in Sources */,
 				2878949E1C0B6F55003E7445 /* Position.swift in Sources */,
 				287894A21C0B744C003E7445 /* PositionViewController.swift in Sources */,
 				287894A01C0B7047003E7445 /* LogoutViewController.swift in Sources */,
+				46F3779E1C165E1200621F79 /* LoginSegue.swift in Sources */,
 				2842ECD41C0CCE14003F2F65 /* DisplayOnlyViewController.swift in Sources */,
 				2842ECD21C0CCCA8003F2F65 /* LoginViewController.swift in Sources */,
 				2878949C1C0B6F4E003E7445 /* DrawingCanvas.swift in Sources */,
@@ -516,6 +577,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WiTrackApp/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = WiTrackApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.mit.WiTrackApp;
@@ -527,6 +592,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WiTrackApp/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = WiTrackApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.mit.WiTrackApp;

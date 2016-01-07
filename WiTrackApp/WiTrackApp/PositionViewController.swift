@@ -10,8 +10,8 @@ import UIKit
 
 class PositionViewController: UIViewController, NSStreamDelegate {
 
-    var username : String?
-    var password : String?
+    var userId : Int?
+    var token : String?
     var ipAddress : String?
     var points : [(x:Float, y:Float)]?
     var positions : [Position]?
@@ -23,6 +23,13 @@ class PositionViewController: UIViewController, NSStreamDelegate {
     @IBOutlet weak var canvas: DrawingCanvas!
     @IBOutlet weak var primary: UIButton!
     @IBOutlet weak var secondary: UIButton!
+    let tapRecognizer = UITapGestureRecognizer()
+    
+    /*let pinchRec = UIPinchGestureRecognizer()
+    let swipeRec = UISwipeGestureRecognizer()
+    let longPressRec = UILongPressGestureRecognizer()
+    let rotateRec = UIRotationGestureRecognizer()
+    let panRec = UIPanGestureRecognizer()*/
     
     var recordingMode = 0
     var tracking = false
@@ -36,11 +43,22 @@ class PositionViewController: UIViewController, NSStreamDelegate {
         
         // Do any additional setup after loading the view.
         points = []
+        
+        tapRecognizer.addTarget(self, action: "tappedView")
+        canvas.addGestureRecognizer(tapRecognizer)
+        canvas.userInteractionEnabled = true
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func tappedView(){
+        let touchLocation = tapRecognizer.locationInView(tapRecognizer.view?.window)
+        let tapAlert = UIAlertController(title: "Tapped", message: "You just tapped the tap view", preferredStyle: UIAlertControllerStyle.Alert)
+        tapAlert.addAction(UIAlertAction(title: "OK", style: .Destructive, handler: nil))
+        self.presentViewController(tapAlert, animated: true, completion: nil)
     }
     
     @IBAction func StartStop(sender: UIButton) {
@@ -56,6 +74,7 @@ class PositionViewController: UIViewController, NSStreamDelegate {
             }
         } else {
             tracking = false
+            canvas.saveCurrentPath()
             primary.setTitle("Start", forState: UIControlState.Normal)
             secondary.setTitle((recordingMode == 0) ? "Corner Making" : "Continuous", forState: UIControlState.Normal)
         }

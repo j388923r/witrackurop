@@ -9,7 +9,10 @@
 import UIKit
 
 class HeightViewController: UIViewController {
-
+    
+    var userId : Int?
+    var token : String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
