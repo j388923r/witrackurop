@@ -64,7 +64,6 @@ import util.Util;
 public class MainActivity extends Activity implements AsyncResponse {
 
     String tokenGenerationURL = "https://www.devemerald.com/api/v1/token/generate";
-    String socketURL = "https://www.devemerald.com/";
     String username, password, token;
     int userId;
 

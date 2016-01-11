@@ -106,7 +106,7 @@ public class DeviceSelectorActivity extends ActionBarActivity implements Util.As
     public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
         Device device = deviceList.get(position);
 
-        Intent i = new Intent(this, PositionActivity.class);
+        Intent i = new Intent(this, ViewControllerActivity.class);
         i.putExtra("token", token);
         i.putExtra("deviceId", device.id);
         i.putExtra("deviceSetupId", device.setup_id);

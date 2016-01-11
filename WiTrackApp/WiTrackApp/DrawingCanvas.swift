@@ -25,8 +25,7 @@ class DrawingCanvas: UIView {
     var colorWheel : [UIColor] = [UIColor.redColor(), UIColor.purpleColor(), UIColor.grayColor(), UIColor.greenColor(), UIColor.blackColor(), UIColor.blueColor(), UIColor.brownColor(), UIColor.cyanColor(), UIColor.yellowColor(), UIColor.orangeColor(), UIColor.magentaColor(), UIColor.lightGrayColor(), UIColor.darkGrayColor()]
     
     // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // print(positionHistory)
+    override func drawRect(rect: CGRect) {  
         print("drawing")
         //drawPath(pathHistory)
         //drawTail(positionHistory)

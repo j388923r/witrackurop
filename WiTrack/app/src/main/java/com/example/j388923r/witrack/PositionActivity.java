@@ -1,5 +1,7 @@
 package com.example.j388923r.witrack;
 
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -58,15 +60,13 @@ public class PositionActivity extends ActionBarActivity {
 
     SurfaceView answerView;
     SurfaceHolder holder;
-    String tokenGenerationURL = "https://www.devemerald.com/api/v1/token/generate";
     String socketURL = "https://www.devemerald.com/";
-    String username, password, userID;
     final SocketTask streaming = new SocketTask();
     List<PersonPath> recordedPaths;
     PersonPath currentPath;
     boolean started = false, tracking = false;
     String pointRecordingMethod = "Corner Marking";
-    String token, title, setupTitle;
+    String token, title, setupTitle, userID;
     int deviceId, deviceSetupId;
 
     float minX = -4.0f;
@@ -92,7 +92,7 @@ public class PositionActivity extends ActionBarActivity {
         currentPath = new PersonPath();
         recordedPaths = new ArrayList<PersonPath>();
 
-        // streaming.execute(socketURL, token, String.valueOf(deviceId), userID);
+        streaming.execute(socketURL, token, String.valueOf(deviceId), userID);
     }
 
     public void setUserID(String id) {
@@ -315,6 +315,8 @@ public class PositionActivity extends ActionBarActivity {
             });
             socket.connect();
 
+            publishProgress();
+
             return "Failed Connection";
         }
 
@@ -323,30 +325,39 @@ public class PositionActivity extends ActionBarActivity {
             Canvas c = holder.lockCanvas();
             if(c != null) {
                 c.drawARGB(255, 234, 243, 234);
-                Paint roomBackgroundPaint = new Paint();
-                roomBackgroundPaint.setColor(Color.LTGRAY);
-                c.drawRect(95, 95, 405, 405, roomBackgroundPaint);
+                if(values.length > 0) {
+                    Paint roomBackgroundPaint = new Paint();
+                    roomBackgroundPaint.setColor(Color.LTGRAY);
+                    c.drawRect(95, 95, 405, 405, roomBackgroundPaint);
 
-                Paint oldPathPaint = new Paint();
-                oldPathPaint.setStyle(Paint.Style.STROKE);
-                for (PersonPath p : recordedPaths) {
-                    oldPathPaint.setColor(p.color);
-                    c.drawPath(p.getPath(), oldPathPaint);
-                    c.drawRect(p.getBounds(), oldPathPaint);
+                    Paint oldPathPaint = new Paint();
+                    oldPathPaint.setStyle(Paint.Style.STROKE);
+                    for (PersonPath p : recordedPaths) {
+                        oldPathPaint.setColor(p.color);
+                        c.drawPath(p.getPath(), oldPathPaint);
+                        c.drawRect(p.getBounds(), oldPathPaint);
+                    }
+
+                    Paint redPaint = new Paint();
+                    redPaint.setColor(Color.RED);
+
+                    if (recordingPath) {
+                        redPaint.setStyle(Paint.Style.STROKE);
+                        c.drawPath(path.getPath(), redPaint);
+                    }
+
+                    redPaint.setStyle(Paint.Style.FILL);
+                    c.drawOval(new RectF(x - 10, y - 10, x + 10, y + 10), redPaint);
+
+                    holder.unlockCanvasAndPost(c);
+                } else {
+                    Paint blackPaint = new Paint();
+                    blackPaint.setColor(Color.BLACK);
+                    blackPaint.setTextSize(60f);
+                    c.drawText("No objects detected.", c.getWidth() * 0.25f, c.getHeight() * 0.25f, blackPaint);
+
+                    holder.unlockCanvasAndPost(c);
                 }
-
-                Paint redPaint = new Paint();
-                redPaint.setColor(Color.RED);
-
-                if (recordingPath) {
-                    redPaint.setStyle(Paint.Style.STROKE);
-                    c.drawPath(path.getPath(), redPaint);
-                }
-
-                redPaint.setStyle(Paint.Style.FILL);
-                c.drawOval(new RectF(x - 10, y - 10, x + 10, y + 10), redPaint);
-
-                holder.unlockCanvasAndPost(c);
             }
         }
 
@@ -356,7 +367,11 @@ public class PositionActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_display, menu);
-        // getActionBar().setHomeButtonEnabled(true);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        // actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setDisplayUseLogoEnabled(true);
+        actionBar.setTitle("Tracking View");
         return true;
     }
 
@@ -366,6 +381,10 @@ public class PositionActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+
+        if (id == R.id.home) {
+
+        }
 
         return super.onOptionsItemSelected(item);
     }

@@ -37,7 +37,7 @@
             <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 
-            <!--               IMPORTANT: Change "com.parse.starter" to match your app's package name. -->
+            <!-- IMPORTANT: Change "com.parse.starter" to match your app's package name. -->
             <category android:name="com.example.j388923r.witrack" />
         </intent-filter>
     </receiver>
@@ -58,10 +58,18 @@
         </activity>
         <activity
             android:name=".DeviceSelectorActivity"
-            android:label="Devices"></activity>
+            android:label="Devices" />
         <activity
             android:name=".PositionActivity"
-            android:label="PositionActivity"></activity>
+            android:label="PositionActivity" />
+        <activity
+            android:name=".ViewControllerActivity"
+            android:label="@string/title_activity_view_controller"
+            android:parentActivityName=".DeviceSelectorActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.j388923r.witrack.DeviceSelectorActivity" />
+        </activity>
     </application>
 
 </manifest>
