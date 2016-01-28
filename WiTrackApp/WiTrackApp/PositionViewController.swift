@@ -12,9 +12,8 @@ class PositionViewController: UIViewController, NSStreamDelegate {
 
     var userId : Int?
     var token : String?
-    var ipAddress : String?
     var points : [(x:Float, y:Float)]?
-    var positions : [Position]?
+    var positions = [Position]()
     var currentPoint : (x: Float, y: Float, personId: Int)?
     var socket : SocketIOClient?
     
@@ -24,15 +23,16 @@ class PositionViewController: UIViewController, NSStreamDelegate {
     @IBOutlet weak var primary: UIButton!
     @IBOutlet weak var secondary: UIButton!
     let tapRecognizer = UITapGestureRecognizer()
+    let longPressRec = UILongPressGestureRecognizer()
     
     /*let pinchRec = UIPinchGestureRecognizer()
     let swipeRec = UISwipeGestureRecognizer()
-    let longPressRec = UILongPressGestureRecognizer()
     let rotateRec = UIRotationGestureRecognizer()
     let panRec = UIPanGestureRecognizer()*/
     
     var recordingMode = 0
     var tracking = false
+    var trackingId = -1
     var minX : Float = -4.0
     var maxX : Float = 4.0
     var minY : Float = 0.0
@@ -44,8 +44,10 @@ class PositionViewController: UIViewController, NSStreamDelegate {
         // Do any additional setup after loading the view.
         points = []
         
-        tapRecognizer.addTarget(self, action: "tappedView")
-        canvas.addGestureRecognizer(tapRecognizer)
+        // tapRecognizer.addTarget(self, action: "tappedView:")
+        longPressRec.addTarget(self, action: "longPress:")
+        // canvas.addGestureRecognizer(tapRecognizer)
+        canvas.addGestureRecognizer(longPressRec)
         canvas.userInteractionEnabled = true
     }
 
@@ -54,18 +56,37 @@ class PositionViewController: UIViewController, NSStreamDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func tappedView(){
-        let touchLocation = tapRecognizer.locationInView(tapRecognizer.view?.window)
+    func tappedView(sender: UITapGestureRecognizer){
+        let touchLocation = sender  .locationInView(tapRecognizer.view)
         let tapAlert = UIAlertController(title: "Tapped", message: "You just tapped the tap view", preferredStyle: UIAlertControllerStyle.Alert)
         tapAlert.addAction(UIAlertAction(title: "OK", style: .Destructive, handler: nil))
         self.presentViewController(tapAlert, animated: true, completion: nil)
+    }
+    
+    func longPress(sender: UILongPressGestureRecognizer) {
+        if sender.state.rawValue == 1 {
+            if !tracking && positions.count > 0 {
+                let touchLocation = sender.locationInView(longPressRec.view)
+                trackingId = getClosestLocation(Float(touchLocation.x), y: Float(touchLocation.y), positions: positions)
+                tracking = true
+                let tapAlert = UIAlertController(title: "Mode Notification", message: "You are now tracking id \(trackingId). To turn off tracking, press and hold anywhere", preferredStyle: UIAlertControllerStyle.Alert)
+                tapAlert.addAction(UIAlertAction(title: "OK", style: .Destructive, handler: nil))
+                self.presentViewController(tapAlert, animated: true, completion: nil)
+            } else if positions.count > 0 {
+                tracking = false
+                trackingId = -1
+                let tapAlert = UIAlertController(title: "Mode Notification", message: "You have turned off tracking.", preferredStyle: UIAlertControllerStyle.Alert)
+                tapAlert.addAction(UIAlertAction(title: "OK", style: .Destructive, handler: nil))
+                self.presentViewController(tapAlert, animated: true, completion: nil)
+            }
+        }
     }
     
     @IBAction func StartStop(sender: UIButton) {
         print(primary.titleLabel!.text!)
         if (primary.titleLabel!.text! == "Start") {
             tracking = true
-            record( currentPoint!.x, y: currentPoint!.y, personId: currentPoint!.personId)
+            //record( currentPoint!.x, y: currentPoint!.y, personId: currentPoint!.personId)
             primary.setTitle("Stop", forState: UIControlState.Normal)
             if (recordingMode == 0) {
                 secondary.setTitle("Record", forState: UIControlState.Normal)
@@ -82,7 +103,7 @@ class PositionViewController: UIViewController, NSStreamDelegate {
     
     @IBAction func Secondary(sender: UIButton) {
         if (primary.titleLabel!.text! == "Start") {
-            if (secondary.titleLabel!.text! == "Corner Making") {
+            if (secondary.titleLabel!.text! == "Corner Marking") {
                 secondary.setTitle("Continuous", forState: UIControlState.Normal)
                 recordingMode = 1
             } else {
@@ -93,7 +114,9 @@ class PositionViewController: UIViewController, NSStreamDelegate {
             if (secondary.titleLabel!.text! == "Record") {
                 tracking = true
                 secondary.setTitle("Pause Recording", forState: UIControlState.Normal)
-                record( currentPoint!.x, y: currentPoint!.y, personId: currentPoint!.personId)
+                /*let tapAlert = UIAlertController(title: "Tapped", message: "You just tapped the tap view", preferredStyle: UIAlertControllerStyle.Alert)
+                tapAlert.addAction(UIAlertAction(title: "OK", style: .Destructive, handler: nil))
+                self.presentViewController(tapAlert, animated: true, completion: nil)*/
             } else {
                 tracking = false
                 secondary.setTitle("Record", forState: UIControlState.Normal)
@@ -115,11 +138,44 @@ class PositionViewController: UIViewController, NSStreamDelegate {
             canvas.moveSilently((x: x, y: y, color: UIColor.greenColor()), personId: personId)
             currentPoint = (x: x, y: y, personId)
         }
-        
     }
     
-    var inputStream : NSInputStream?
-    var outputStream : NSOutputStream?
+    func record(personList : NSArray) {
+        positions.removeAll()
+        for k in 0...personList.count - 1 {
+            let p = personList[k] as! NSMutableDictionary
+            let pos = Position(x: (p["x"]! as! Float - minX) * Float(canvas.frame.size.width) / (maxX - minX), y: (p["y"]! as! Float - minY) * Float(canvas.frame.size.height) / (maxY - minY), z: p["z"]! as! Float, personId: p["personId"]! as! Int)
+            positions.append(pos)
+        }
+        canvas.update(positions)
+    }
+    
+    func record(personList : NSArray, personId : Int) -> Bool {
+        positions.removeAll()
+        for k in 0...personList.count - 1 {
+            let p = personList[k] as! NSMutableDictionary
+            let pId = p["personId"]! as! Int
+            if pId == personId {
+                let pos = Position(x: (p["x"]! as! Float - minX) * Float(canvas.frame.size.width) / (maxX - minX), y: (p["y"]! as! Float - minY) * Float(canvas.frame.size.height) / (maxY - minY), z: p["z"]! as! Float, personId: pId)
+                positions.append(pos)
+            }
+        }
+        canvas.update(positions)
+        return true
+    }
+    
+    func getClosestLocation(x: Float, y: Float, positions : [Position]) -> Int {
+        var min : Float = Float(Int.max)
+        var minId = positions.count
+        for k in 0...positions.count - 1 {
+            var distanceMetric = powf(x - positions[k].x!, 2) + powf(y - positions[k].y!, 2)
+            if distanceMetric < min {
+                minId = positions[k].personId!
+                min = distanceMetric
+            }
+        }
+        return minId
+    }
     
     /*
     // MARK: - Navigation

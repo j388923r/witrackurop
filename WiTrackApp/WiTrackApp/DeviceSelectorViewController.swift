@@ -14,23 +14,27 @@ class DeviceSelectorViewController: UITableViewController {
     var userId : Int?
     var token : String?
     var devices : [Device]!
+    var displayDevices = [Device]()
+    var savedDevices : [WantedDevice]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        // self.title = "Device List"
-        // loadSampleDevices()
+        savedDevices = loadSavedDevices()
+        loadDeviceTable()
     }
-
-    func loadSampleDevices() {
-        let device1 = Device(id: 1, realtime_access: 1, setup_id: 1, setup_title: "CSAIL Test Devices", title: "Virtual Device")
-        
-        let device2 = Device(id: 2, realtime_access: 1, setup_id: 1, setup_title: "CSAIL Test Devices", title: "Dina's Office (user02)")
-        
-        devices.append(device1)
-        devices.append(device2)
+    
+    func loadDeviceTable() {
+        for j in 0..<savedDevices!.count {
+            for i in 0..<devices.count {
+                let device : Device = devices[i]
+                if device.title == savedDevices![j].title && device.id == savedDevices![j].deviceId {
+                    displayDevices.append(device)
+                    break
+                }
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -44,7 +48,7 @@ class DeviceSelectorViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // return something depending on section
-        return devices.count
+        return displayDevices.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -52,7 +56,7 @@ class DeviceSelectorViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! DeviceCell
         
         // Configure the cell...
-        let device = devices[indexPath.row]
+        let device = displayDevices[indexPath.row]
         
         cell.nameLabel.text = device.title
         if device.realtime_access != 1 {
@@ -61,6 +65,10 @@ class DeviceSelectorViewController: UITableViewController {
         }
         
         return cell
+    }
+    
+    func loadSavedDevices() -> [WantedDevice]? {
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(WantedDevice.ArchiveURL.path!) as? [WantedDevice]
     }
     
     @IBAction func logoutAction(sender: UIBarButtonItem) {
@@ -82,9 +90,16 @@ class DeviceSelectorViewController: UITableViewController {
             if let destinationController = segue.destinationViewController as? ViewController {
                 let tableView = self.view as! UITableView
                 if let deviceIndex = tableView.indexPathForSelectedRow?.row {
-                    destinationController.device = devices[deviceIndex]
+                    destinationController.device = displayDevices[deviceIndex]
                     destinationController.token = token
                 }
+            }
+        } else if segue.identifier == "addDeviceSegue" {
+            if let destinationController = segue.destinationViewController as? AddDeviceTableViewController {
+                // destinationController.navigationItem.backBarButtonItem?.title = "Cancel"
+                destinationController.devices = devices
+                destinationController.token = token!
+                destinationController.userId = userId!
             }
         }
     }

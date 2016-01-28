@@ -6,7 +6,6 @@
 //  Copyright © 2015 Jamar. All rights reserved.
 //
 
-import Alamofire
 import UIKit
 
 class LoginSegue: UIStoryboardSegue {

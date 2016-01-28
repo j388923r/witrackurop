@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.j388923r.witrack"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
@@ -30,4 +30,13 @@ dependencies {
     compile 'com.parse.bolts:bolts-android:1.+'
     compile 'io.socket:socket.io-client:0.6.2'
     compile 'com.android.support:support-v4:21.0.3'
+    compile 'com.google.android.gms:play-services-base:6.5.87'
+    compile 'com.microsoft.azure.android:azure-storage-android:0.7.0@aar'
+    compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
+}
+
+repositories {
+    maven {
+        url "http://dl.bintray.com/microsoftazuremobile/SDK"
+    }
 }

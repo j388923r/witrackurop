@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.j388923r.witrack.HomeActivity">
+
+    <TextView
+        android:id="@+id/home_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="32sp"
+        android:text="Emerald" />
+
+    <ImageView
+        android:id="@+id/home_icon"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/home_text"
+        android:paddingBottom="25dp"
+        android:paddingTop="2dp"
+        android:src="@mipmap/emerald_large"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/home_icon"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/home_tracking"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:padding="5dp"
+                android:drawableTop="@mipmap/emerald"
+                android:text="Live Tracking"
+                android:layout_weight="1"
+                android:onClick="openTracking" />
+
+            <Button
+                android:id="@+id/home_stats"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:padding="5dp"
+                android:drawableTop="@mipmap/rsz_stats_icon"
+                android:text="Stats"
+                android:layout_weight="1"
+                android:onClick="openStats" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/home_alerts"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:padding="5dp"
+                android:drawableTop="@mipmap/alert"
+                android:text="Alerts"
+                android:layout_weight="1"
+                android:onClick="openAlerts" />
+
+            <Button
+                android:id="@+id/home_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:padding="5dp"
+                android:drawableTop="@mipmap/settings"
+                android:text="Settings"
+                android:layout_weight="1"
+                android:onClick="openSettings" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -2,22 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.j388923r.witrack">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <receiver
+        android:name="com.microsoft.windowsazure.notifications.NotificationsBroadcastReceiver"
+        android:permission="com.google.android.c2dm.permission.SEND">
+        <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
 
-    <!--
-      IMPORTANT: Change "com.parse.starter.permission.C2D_MESSAGE" in the lines below
-      to match your app's package name + ".permission.C2D_MESSAGE".
-    -->
-    <permission
-        android:name="com.example.j388923r.witrack.permission.C2D_MESSAGE"
-        android:protectionLevel="signature" />
-
-    <uses-permission android:name="com.example.j388923r.witrack.permission.C2D_MESSAGE" />
+            <category android:name="com.example.j388923r.witrack" />
+        </intent-filter>
+    </receiver>
 
     <service android:name="com.parse.PushService" />
 
@@ -42,9 +35,26 @@
         </intent-filter>
     </receiver>
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <!--
+      IMPORTANT: Change "com.parse.starter.permission.C2D_MESSAGE" in the lines below
+      to match your app's package name + ".permission.C2D_MESSAGE".
+    -->
+    <permission
+        android:name="com.example.j388923r.witrack.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.example.j388923r.witrack.permission.C2D_MESSAGE" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
@@ -64,12 +74,52 @@
             android:label="PositionActivity" />
         <activity
             android:name=".ViewControllerActivity"
-            android:label="@string/title_activity_view_controller"
+            android:label="Live Tracking"
             android:parentActivityName=".DeviceSelectorActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.j388923r.witrack.DeviceSelectorActivity" />
         </activity>
+        <activity
+            android:name=".AddDeviceActivity"
+            android:parentActivityName=".DeviceSelectorActivity" />
+        <activity android:name=".HomeActivity" />
+        <activity
+            android:name=".StatsHomeActivity"
+            android:label="Statistics"
+            android:parentActivityName=".HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.j388923r.witrack.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".AlertsHomeActivity"
+            android:label="Alerts"
+            android:parentActivityName=".HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.j388923r.witrack.HomeActivity" />
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity android:name=".ReplayActivity" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.j388923r.witrack.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".TutorialActivity"
+            android:label="@string/title_activity_tutorial" />
+        <activity
+            android:name=".AddDeviceListActivity"
+            android:label="@string/title_activity_add_device_list"></activity>
     </application>
 
 </manifest>

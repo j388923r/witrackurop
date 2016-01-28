@@ -27,7 +27,7 @@
                                 <rect key="frame" x="167" y="442" width="267" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -50,6 +50,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="emerald.png" width="300" height="300"/>
+        <image name="emerald.png" width="128" height="128"/>
     </resources>
 </document>

@@ -1,10 +1,9 @@
 package util;
 
+import android.graphics.Color;
 import android.graphics.Point;
 import android.os.AsyncTask;
 import android.util.Log;
-
-import com.example.j388923r.witrack.AsyncResponse;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -22,7 +21,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +28,14 @@ import java.util.List;
  * Created by j388923r on 10/11/2015.
  */
 public class Util {
+
+    public static String tokenGenerationURL = "https://www.devemerald.com/api/v1/token/generate";
+
+    public static String socketURL = "https://www.devemerald.com/";
+
+    public static int[] colorWheel = new int[] {Color.MAGENTA, Color.RED, Color.GRAY, Color.GREEN, Color.BLACK, Color.BLUE, Color.CYAN, Color.YELLOW, Color.LTGRAY, Color.DKGRAY };
+
+    public static long DAY_IN_MS = 1000 * 60 * 60 * 24;
 
     public static String convertStreamToString(InputStream is) {
         String line = "";
@@ -71,7 +77,6 @@ public class Util {
                     line = convertStreamToString(inputstream);
                     JSONObject reader = new JSONObject(line);
                     boolean success = reader.getBoolean("success");
-                    // JSONObject object = reader.getJSONObject("data");
                     if (success) {
                         JSONArray data = reader.getJSONArray("data");
                         return data;
@@ -90,6 +95,57 @@ public class Util {
 
         public void onPostExecute(JSONArray array) {
             response.processFinish(array);
+        }
+    }
+
+    public static class GetReplayDataTask extends AsyncTask<String, Integer, JSONObject> {
+
+        AsyncResponse response;
+
+        public GetReplayDataTask(AsyncResponse response) {
+            this.response = response;
+        }
+
+        @Override
+        protected JSONObject doInBackground(String... params) {
+            // TODO Auto-generated method stub
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httpPost = new HttpPost(params[0]);
+            httpPost.setHeader("X-Token", params[1]);
+            List<NameValuePair> formparams = new ArrayList<NameValuePair>();
+            formparams.add(new BasicNameValuePair("device", params[2]));
+            formparams.add(new BasicNameValuePair("time_start_ms", params[3]));
+            try {
+                httpPost.setEntity(new UrlEncodedFormEntity(formparams));
+            } catch (UnsupportedEncodingException uee) {
+                uee.printStackTrace();
+            }
+            try {
+                HttpResponse response = httpclient.execute(httpPost);
+                if (response != null) {
+                    String line = "";
+                    InputStream inputstream = response.getEntity().getContent();
+                    line = Util.convertStreamToString(inputstream);
+                    JSONObject reader = new JSONObject(line);
+                    boolean success = reader.getBoolean("success");
+                    if (success) {
+                        JSONObject data = reader.getJSONObject("data");
+                        return data;
+                    }
+                }
+            } catch (ClientProtocolException e) {
+
+            } catch (IOException e) {
+
+            } catch (Exception e) {
+                Log.w("ExceptionW", "e=");
+                Log.d("ExceptionD", "e: " + e);
+            }
+            return new JSONObject();
+        }
+
+        public void onPostExecute(JSONObject object) {
+            response.processFinish(object);
         }
     }
 

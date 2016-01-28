@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import fragments.*;
+import util.Position;
 
 public class ViewControllerActivity extends AppCompatActivity {
 
@@ -42,16 +43,19 @@ public class ViewControllerActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setTitle(title);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Display"));
         tabLayout.addTab(tabLayout.newTab().setText("Tracking"));
         tabLayout.addTab(tabLayout.newTab().setText("Height"));
+        tabLayout.addTab(tabLayout.newTab().setText("Replay"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
         vPager = (ViewPager) findViewById(R.id.pager);
         vcPager = new ViewControllerPager
-                (getSupportFragmentManager());
+                (getSupportFragmentManager(), token, deviceId);
         vPager.setAdapter(vcPager);
         vPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -72,34 +76,56 @@ public class ViewControllerActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
 }
 
 class ViewControllerPager extends FragmentPagerAdapter {
 
-    public ViewControllerPager(FragmentManager fm) {
+    DisplayOnlyFragment display;
+    PositionFragment tracking;
+    HeightViewFragment height;
+    ReplayFragment replay;
+
+    public ViewControllerPager(FragmentManager fm, String token, int deviceId) {
         super(fm);
+        Bundle args = new Bundle();
+        args.putString("token", token);
+        args.putInt("deviceId", deviceId);
+
+        display = new DisplayOnlyFragment();
+        tracking = new PositionFragment();
+        height = new HeightViewFragment();
+        replay = new ReplayFragment();
+
+        display.setArguments(args);
+        tracking.setArguments(args);
+        height.setArguments(args);
+        replay.setArguments(args);
     }
 
     @Override
     public Fragment getItem(int position) {
         Bundle bundle = new Bundle();
-        bundle.putInt(DefaultFragment.ARG_OBJECT, position);
+        bundle.putInt(PositionFragment.ARG_OBJECT, position);
 
         switch (position) {
             case 0:
-                Fragment display = new DisplayOnlyFragment();
-                display.setArguments(bundle);
+                tracking.killSocket();
                 return display;
             case 1:
-                Fragment tracking = new DefaultFragment();
-                tracking.setArguments(bundle);
+                display.killSocket();
                 return tracking;
             case 2:
-                Fragment height = new HeightViewFragment();
-                height.setArguments(bundle);
                 return height;
+            case 3:
+                return replay;
             default:
-                Fragment fragment = new DefaultFragment();
+                Fragment fragment = new HeightViewFragment();
                 fragment.setArguments(bundle);
                 return fragment;
         }
@@ -107,7 +133,7 @@ class ViewControllerPager extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
 
     @Override
@@ -119,6 +145,8 @@ class ViewControllerPager extends FragmentPagerAdapter {
                 return "Tracking View";
             case 2:
                 return "Height View";
+            case 3:
+                return "Replay View";
             default:
                 return "initial";
         }

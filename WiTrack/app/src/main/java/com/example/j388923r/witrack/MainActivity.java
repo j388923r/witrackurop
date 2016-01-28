@@ -1,25 +1,16 @@
 package com.example.j388923r.witrack;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-//import java.net.Socket;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
@@ -27,37 +18,21 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.RectF;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.InputType;
 import android.util.Log;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.parse.Parse;
-import com.parse.ParseInstallation;
+import com.google.android.gms.gcm.*;
+import com.microsoft.windowsazure.messaging.*;
+import com.microsoft.windowsazure.notifications.NotificationsManager;
 
-import io.socket.client.IO;
-import io.socket.client.Socket;
-import io.socket.emitter.Emitter;
-import util.PersonPath;
+import util.AsyncResponse;
 import util.Util;
 
 
@@ -67,17 +42,30 @@ public class MainActivity extends Activity implements AsyncResponse {
     String username, password, token;
     int userId;
 
+    private String SENDER_ID = "783631282030";
+    private GoogleCloudMessaging gcm;
+    private NotificationHub hub;
+    private String HubName = "witrackemerald";
+    private String HubListenConnectionString = "Endpoint=sb://witrackemerald-ns.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=NTbLpiRx1iEvKoAvEoQZbUr17OubT95OUDAz88ronWo=";
+    private static Boolean isVisible = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SharedPreferences prefs = this.getPreferences(Context.MODE_PRIVATE);
+        MyHandler.mainActivity = this;
+        NotificationsManager.handleNotifications(this, SENDER_ID, MyHandler.class);
+        gcm = GoogleCloudMessaging.getInstance(this);
+        hub = new NotificationHub(HubName, HubListenConnectionString, this);
+        registerWithNotificationHubs();
+
+        SharedPreferences prefs = this.getSharedPreferences("login", Context.MODE_PRIVATE);
         userId = prefs.getInt(getString(R.string.userId), -1);
         token = prefs.getString(getString(R.string.token), "");
 
         JSONObject login = new JSONObject();
-        if(userId >= 0 && !token.equals("")) {
+        if (userId >= 0 && !token.equals("")) {
             try {
                 login.put(getString(R.string.userId), userId);
                 login.put(getString(R.string.token), token);
@@ -87,6 +75,59 @@ public class MainActivity extends Activity implements AsyncResponse {
 
         //Parse.initialize(this, "qUFOUjf6omK7m3qy3o38YBP9s8XbrGYgoER5YvRM", "waBDv05GCS7v9DiJQc0PraAsZDgOnDEds1gu9eqI");
         //ParseInstallation.getCurrentInstallation().saveInBackground();
+    }
+
+    @SuppressWarnings("unchecked")
+    private void registerWithNotificationHubs() {
+        new AsyncTask() {
+            @Override
+            protected Object doInBackground(Object... params) {
+                try {
+                    String regid = gcm.register(SENDER_ID);
+                    ToastNotify("Registered Successfully - RegId : " +
+                            hub.register(regid).getRegistrationId());
+                } catch (Exception e) {
+                    ToastNotify("Registration Exception Message - " + e.getMessage());
+                    return e;
+                }
+                return null;
+            }
+        }.execute(null, null, null);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        isVisible = true;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        isVisible = false;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isVisible = true;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        isVisible = false;
+    }
+
+    public void ToastNotify(final String notificationMessage)
+    {
+        if (isVisible == true)
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(MainActivity.this, notificationMessage, Toast.LENGTH_LONG).show();
+                }
+            });
     }
 
     public void login(View view) {
@@ -105,15 +146,18 @@ public class MainActivity extends Activity implements AsyncResponse {
             e.printStackTrace();
         }
 
-        SharedPreferences prefs = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences prefs = this.getSharedPreferences("login", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(getString(R.string.token), token);
         editor.putInt(getString(R.string.userId), userId);
         editor.commit();
 
-        Intent i = new Intent(this, DeviceSelectorActivity.class);
+        Intent i = new Intent(this, HomeActivity.class);
         i.putExtra("token", token);
         i.putExtra("userId", userId);
+
+        ((EditText)findViewById(R.id.username)).setText("");
+        ((EditText)findViewById(R.id.password)).setText("");
 
         startActivity(i);
     }

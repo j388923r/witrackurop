@@ -1,10 +1,13 @@
 package com.example.j388923r.witrack;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.internal.widget.AppCompatPopupWindow;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,12 +32,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.List;
 
 import util.Util;
 import util.Device;
 
-public class DeviceSelectorActivity extends ActionBarActivity implements Util.AsyncArrayResponse, AdapterView.OnItemClickListener {
+public class DeviceSelectorActivity extends AppCompatActivity implements Util.AsyncArrayResponse, AdapterView.OnItemClickListener {
 
     String token;
     int userId;
@@ -48,6 +50,9 @@ public class DeviceSelectorActivity extends ActionBarActivity implements Util.As
 
         token = getIntent().getStringExtra("token");
         userId = getIntent().getIntExtra("userId", -1);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.devicestoolbar);
+        setSupportActionBar(toolbar);
 
         Util.GetDevicesTask getDevices = new Util.GetDevicesTask(this);
 
@@ -98,6 +103,11 @@ public class DeviceSelectorActivity extends ActionBarActivity implements Util.As
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_add) {
+            Intent i = new Intent(this, AddDeviceListActivity.class);
+            i.putExtra(getString(R.string.token), token);
+            i.putExtra(getString(R.string.userId), userId);
+
+            startActivity(i);
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -114,5 +124,18 @@ public class DeviceSelectorActivity extends ActionBarActivity implements Util.As
         i.putExtra("deviceSetupTitle", device.setup_title);
 
         startActivity(i);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        SharedPreferences prefs = this.getSharedPreferences("login", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(getString(R.string.token), "");
+        editor.putInt(getString(R.string.userId), -1);
+        editor.commit();
+
+        finish();
     }
 }

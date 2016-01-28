@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor.blueColor()
         
+        
         return true
     }
 

@@ -45,6 +45,26 @@
 		287894CD1C0B7591003E7445 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287894BA1C0B7591003E7445 /* WebSocket.swift */; };
 		463853991C0FD84500CB158B /* HeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463853981C0FD84500CB158B /* HeightViewController.swift */; };
 		4638539B1C116DE400CB158B /* DeviceSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4638539A1C116DE400CB158B /* DeviceSelectorViewController.swift */; };
+		463DDB3B1C505FC900905FFE /* WantedDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463DDB3A1C505FC900905FFE /* WantedDevices.swift */; };
+		4643224D1C526E2A00FA8908 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4643224C1C526E2A00FA8908 /* Charts.framework */; };
+		4643224E1C526E2A00FA8908 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4643224C1C526E2A00FA8908 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		464322511C53444E00FA8908 /* IndicatorCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464322501C53444E00FA8908 /* IndicatorCanvas.swift */; };
+		464322551C53F0E500FA8908 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464322541C53F0E500FA8908 /* SettingsViewController.swift */; };
+		464322571C53F84E00FA8908 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464322561C53F84E00FA8908 /* Setting.swift */; };
+		4688E30E1C5404780005D3E9 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E30D1C5404780005D3E9 /* SettingCell.swift */; };
+		4688E3111C5688FB0005D3E9 /* SetupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E3101C5688FB0005D3E9 /* SetupController.swift */; };
+		4688E3151C56CDCB0005D3E9 /* CalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E3141C56CDCB0005D3E9 /* CalibrationViewController.swift */; };
+		4688E3171C57DC800005D3E9 /* PerceptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E3161C57DC800005D3E9 /* PerceptionViewController.swift */; };
+		4688E31B1C592E7B0005D3E9 /* AddDeviceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E31A1C592E7B0005D3E9 /* AddDeviceTableViewController.swift */; };
+		4688E31D1C5932350005D3E9 /* AddDeviceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E31C1C5932350005D3E9 /* AddDeviceCell.swift */; };
+		4688E3201C5942ED0005D3E9 /* AddDeviceSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E31F1C5942ED0005D3E9 /* AddDeviceSegue.swift */; };
+		4688E3221C5943C40005D3E9 /* SetupDeviceSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E3211C5943C40005D3E9 /* SetupDeviceSegue.swift */; };
+		4688E3241C5962880005D3E9 /* SlideUpNavigationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E3231C5962880005D3E9 /* SlideUpNavigationSegue.swift */; };
+		4688E3261C59647A0005D3E9 /* SlideDownNavigationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E3251C59647A0005D3E9 /* SlideDownNavigationSegue.swift */; };
+		4688E3281C5AAD9D0005D3E9 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688E3271C5AAD9D0005D3E9 /* Room.swift */; };
+		46F051E71C458FBA009BAF1C /* CancelSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F051E61C458FBA009BAF1C /* CancelSegue.swift */; };
+		46F051E91C489884009BAF1C /* ReplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F051E81C489884009BAF1C /* ReplayController.swift */; };
+		46F051EB1C496EAA009BAF1C /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F051EA1C496EAA009BAF1C /* Frame.swift */; };
 		46F377951C12027100621F79 /* SignInInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F377941C12027100621F79 /* SignInInfo.swift */; };
 		46F3779A1C12225E00621F79 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F377981C12225E00621F79 /* Alamofire.framework */; };
 		46F3779B1C12225E00621F79 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F377991C12225E00621F79 /* SwiftyJSON.framework */; };
@@ -52,7 +72,6 @@
 		46F377A01C1675CA00621F79 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F3779F1C1675CA00621F79 /* Device.swift */; };
 		46F377A21C16897800621F79 /* DeviceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F377A11C16897800621F79 /* DeviceCell.swift */; };
 		46F377A81C17814B00621F79 /* AddDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F377A71C17814B00621F79 /* AddDeviceViewController.swift */; };
-		46F377AA1C18ED1500621F79 /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F377A91C18ED1500621F79 /* UserObject.swift */; };
 		46F378191C28728300621F79 /* emerald.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F378181C28728300621F79 /* emerald.png */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +91,20 @@
 			remoteInfo = WiTrackApp;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4643224F1C526E2A00FA8908 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4643224E1C526E2A00FA8908 /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2842ECD11C0CCCA8003F2F65 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +151,27 @@
 		287894BA1C0B7591003E7445 /* WebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WebSocket.swift; path = WiTrackApp/SocketIOClientSwift/WebSocket.swift; sourceTree = "<group>"; };
 		463853981C0FD84500CB158B /* HeightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightViewController.swift; sourceTree = "<group>"; };
 		4638539A1C116DE400CB158B /* DeviceSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceSelectorViewController.swift; sourceTree = "<group>"; };
+		463DDB3A1C505FC900905FFE /* WantedDevices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WantedDevices.swift; sourceTree = "<group>"; };
+		4643224C1C526E2A00FA8908 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = WiTrackApp/Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
+		464322501C53444E00FA8908 /* IndicatorCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorCanvas.swift; sourceTree = "<group>"; };
+		464322541C53F0E500FA8908 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		464322561C53F84E00FA8908 /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		4688E30D1C5404780005D3E9 /* SettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		4688E3101C5688FB0005D3E9 /* SetupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupController.swift; sourceTree = "<group>"; };
+		4688E3141C56CDCB0005D3E9 /* CalibrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalibrationViewController.swift; sourceTree = "<group>"; };
+		4688E3161C57DC800005D3E9 /* PerceptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerceptionViewController.swift; sourceTree = "<group>"; };
+		4688E31A1C592E7B0005D3E9 /* AddDeviceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceTableViewController.swift; sourceTree = "<group>"; };
+		4688E31C1C5932350005D3E9 /* AddDeviceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceCell.swift; sourceTree = "<group>"; };
+		4688E31F1C5942ED0005D3E9 /* AddDeviceSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceSegue.swift; sourceTree = "<group>"; };
+		4688E3211C5943C40005D3E9 /* SetupDeviceSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupDeviceSegue.swift; sourceTree = "<group>"; };
+		4688E3231C5962880005D3E9 /* SlideUpNavigationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideUpNavigationSegue.swift; sourceTree = "<group>"; };
+		4688E3251C59647A0005D3E9 /* SlideDownNavigationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideDownNavigationSegue.swift; sourceTree = "<group>"; };
+		4688E3271C5AAD9D0005D3E9 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		46CDC39A1C4C769F004BDD71 /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WindowsAzureMessaging.framework; path = "../../../Downloads/azuresdk-iOS-v1/WindowsAzureMessaging.framework"; sourceTree = "<group>"; };
+		46CDC39C1C4C77FB004BDD71 /* HubInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HubInfo.h; sourceTree = "<group>"; };
+		46F051E61C458FBA009BAF1C /* CancelSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelSegue.swift; sourceTree = "<group>"; };
+		46F051E81C489884009BAF1C /* ReplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplayController.swift; sourceTree = "<group>"; };
+		46F051EA1C496EAA009BAF1C /* Frame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Frame.swift; sourceTree = "<group>"; };
 		46F377941C12027100621F79 /* SignInInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInInfo.swift; sourceTree = "<group>"; };
 		46F377961C12223700621F79 /* Carthage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Carthage; path = WiTrackApp/Carthage; sourceTree = "<group>"; };
 		46F377981C12225E00621F79 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = WiTrackApp/Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -126,7 +180,6 @@
 		46F3779F1C1675CA00621F79 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		46F377A11C16897800621F79 /* DeviceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceCell.swift; sourceTree = "<group>"; };
 		46F377A71C17814B00621F79 /* AddDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceViewController.swift; sourceTree = "<group>"; };
-		46F377A91C18ED1500621F79 /* UserObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
 		46F378181C28728300621F79 /* emerald.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = emerald.png; path = Assets.xcassets/emerald.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,6 +190,7 @@
 			files = (
 				46F3779A1C12225E00621F79 /* Alamofire.framework in Frameworks */,
 				46F3779B1C12225E00621F79 /* SwiftyJSON.framework in Frameworks */,
+				4643224D1C526E2A00FA8908 /* Charts.framework in Frameworks */,
 				287894991C0A674E003E7445 /* libicucore.A.tbd in Frameworks */,
 				2878949A1C0A674E003E7445 /* libicucore.tbd in Frameworks */,
 			);
@@ -162,6 +216,8 @@
 		287894591C0A6579003E7445 = {
 			isa = PBXGroup;
 			children = (
+				4643224C1C526E2A00FA8908 /* Charts.framework */,
+				46CDC39A1C4C769F004BDD71 /* WindowsAzureMessaging.framework */,
 				46F377981C12225E00621F79 /* Alamofire.framework */,
 				46F377991C12225E00621F79 /* SwiftyJSON.framework */,
 				46F377961C12223700621F79 /* Carthage */,
@@ -206,29 +262,31 @@
 		287894641C0A6579003E7445 /* WiTrackApp */ = {
 			isa = PBXGroup;
 			children = (
+				4688E31E1C5942AD0005D3E9 /* Segues */,
+				4688E3131C56C2350005D3E9 /* Setup */,
+				4688E3121C5694E50005D3E9 /* Models */,
+				4688E30F1C5404920005D3E9 /* View Subclasses */,
 				287894A51C0B74C6003E7445 /* SocketIOClientSwift */,
 				287894A31C0B74B6003E7445 /* SocketIO-iOS */,
 				287894651C0A6579003E7445 /* AppDelegate.swift */,
-				287894671C0A6579003E7445 /* ViewController.swift */,
 				287894691C0A6579003E7445 /* Main.storyboard */,
+				2878946E1C0A6579003E7445 /* LaunchScreen.storyboard */,
 				46F378181C28728300621F79 /* emerald.png */,
 				2878946C1C0A6579003E7445 /* Assets.xcassets */,
-				2878946E1C0A6579003E7445 /* LaunchScreen.storyboard */,
 				2842ECD11C0CCCA8003F2F65 /* LoginViewController.swift */,
 				4638539A1C116DE400CB158B /* DeviceSelectorViewController.swift */,
+				287894671C0A6579003E7445 /* ViewController.swift */,
 				2842ECD31C0CCE14003F2F65 /* DisplayOnlyViewController.swift */,
 				287894A11C0B744C003E7445 /* PositionViewController.swift */,
 				463853981C0FD84500CB158B /* HeightViewController.swift */,
-				46F3779D1C165E1200621F79 /* LoginSegue.swift */,
-				46F377A11C16897800621F79 /* DeviceCell.swift */,
-				2878949B1C0B6F4E003E7445 /* DrawingCanvas.swift */,
+				46F051E81C489884009BAF1C /* ReplayController.swift */,
+				4688E31A1C592E7B0005D3E9 /* AddDeviceTableViewController.swift */,
+				464322541C53F0E500FA8908 /* SettingsViewController.swift */,
 				2878949F1C0B7047003E7445 /* LogoutViewController.swift */,
+				46F051E61C458FBA009BAF1C /* CancelSegue.swift */,
 				287894711C0A6579003E7445 /* Info.plist */,
-				2878949D1C0B6F55003E7445 /* Position.swift */,
-				46F3779F1C1675CA00621F79 /* Device.swift */,
-				46F377941C12027100621F79 /* SignInInfo.swift */,
+				46CDC39C1C4C77FB004BDD71 /* HubInfo.h */,
 				46F377A71C17814B00621F79 /* AddDeviceViewController.swift */,
-				46F377A91C18ED1500621F79 /* UserObject.swift */,
 			);
 			path = WiTrackApp;
 			sourceTree = "<group>";
@@ -251,6 +309,54 @@
 			path = WiTrackAppUITests;
 			sourceTree = "<group>";
 		};
+		4688E30F1C5404920005D3E9 /* View Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				4688E31C1C5932350005D3E9 /* AddDeviceCell.swift */,
+				46F377A11C16897800621F79 /* DeviceCell.swift */,
+				4688E30D1C5404780005D3E9 /* SettingCell.swift */,
+				2878949B1C0B6F4E003E7445 /* DrawingCanvas.swift */,
+				464322501C53444E00FA8908 /* IndicatorCanvas.swift */,
+			);
+			name = "View Subclasses";
+			sourceTree = "<group>";
+		};
+		4688E3121C5694E50005D3E9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				46F3779F1C1675CA00621F79 /* Device.swift */,
+				46F051EA1C496EAA009BAF1C /* Frame.swift */,
+				2878949D1C0B6F55003E7445 /* Position.swift */,
+				4688E3271C5AAD9D0005D3E9 /* Room.swift */,
+				464322561C53F84E00FA8908 /* Setting.swift */,
+				46F377941C12027100621F79 /* SignInInfo.swift */,
+				463DDB3A1C505FC900905FFE /* WantedDevices.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		4688E3131C56C2350005D3E9 /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				4688E3101C5688FB0005D3E9 /* SetupController.swift */,
+				4688E3141C56CDCB0005D3E9 /* CalibrationViewController.swift */,
+				4688E3161C57DC800005D3E9 /* PerceptionViewController.swift */,
+			);
+			name = Setup;
+			sourceTree = "<group>";
+		};
+		4688E31E1C5942AD0005D3E9 /* Segues */ = {
+			isa = PBXGroup;
+			children = (
+				46F3779D1C165E1200621F79 /* LoginSegue.swift */,
+				4688E31F1C5942ED0005D3E9 /* AddDeviceSegue.swift */,
+				4688E3211C5943C40005D3E9 /* SetupDeviceSegue.swift */,
+				4688E3251C59647A0005D3E9 /* SlideDownNavigationSegue.swift */,
+				4688E3231C5962880005D3E9 /* SlideUpNavigationSegue.swift */,
+			);
+			name = Segues;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -262,6 +368,7 @@
 				2878945F1C0A6579003E7445 /* Frameworks */,
 				287894601C0A6579003E7445 /* Resources */,
 				46F3779C1C12228300621F79 /* ShellScript */,
+				4643224F1C526E2A00FA8908 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -389,6 +496,7 @@
 			inputPaths = (
 				"$(SRCROOT)/WiTrackApp/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/WiTrackApp/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/WiTrackApp/Carthage/Build/iOS/Charts.framework",
 			);
 			outputPaths = (
 			);
@@ -404,38 +512,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				287894BB1C0B7591003E7445 /* SocketAckEmitter.swift in Sources */,
+				4688E3201C5942ED0005D3E9 /* AddDeviceSegue.swift in Sources */,
 				287894BC1C0B7591003E7445 /* SocketAckManager.swift in Sources */,
 				287894BD1C0B7591003E7445 /* SocketAnyEvent.swift in Sources */,
 				287894BE1C0B7591003E7445 /* SocketEngine.swift in Sources */,
 				287894BF1C0B7591003E7445 /* SocketEngineClient.swift in Sources */,
+				4688E3281C5AAD9D0005D3E9 /* Room.swift in Sources */,
 				463853991C0FD84500CB158B /* HeightViewController.swift in Sources */,
 				287894C01C0B7591003E7445 /* SocketEnginePacketType.swift in Sources */,
+				464322551C53F0E500FA8908 /* SettingsViewController.swift in Sources */,
 				287894C11C0B7591003E7445 /* SocketEngineSpec.swift in Sources */,
 				46F377A21C16897800621F79 /* DeviceCell.swift in Sources */,
 				287894C21C0B7591003E7445 /* SocketEventHandler.swift in Sources */,
 				287894C31C0B7591003E7445 /* SocketFixUTF8.swift in Sources */,
 				287894C41C0B7591003E7445 /* SocketIOClient.swift in Sources */,
+				4688E3221C5943C40005D3E9 /* SetupDeviceSegue.swift in Sources */,
+				4688E31D1C5932350005D3E9 /* AddDeviceCell.swift in Sources */,
+				46F051EB1C496EAA009BAF1C /* Frame.swift in Sources */,
 				46F377951C12027100621F79 /* SignInInfo.swift in Sources */,
 				287894C51C0B7591003E7445 /* SocketIOClientOption.swift in Sources */,
 				287894C61C0B7591003E7445 /* SocketIOClientStatus.swift in Sources */,
-				46F377AA1C18ED1500621F79 /* UserObject.swift in Sources */,
 				4638539B1C116DE400CB158B /* DeviceSelectorViewController.swift in Sources */,
 				46F377A81C17814B00621F79 /* AddDeviceViewController.swift in Sources */,
+				463DDB3B1C505FC900905FFE /* WantedDevices.swift in Sources */,
 				287894C71C0B7591003E7445 /* SocketLogger.swift in Sources */,
 				287894C81C0B7591003E7445 /* SocketPacket.swift in Sources */,
 				287894C91C0B7591003E7445 /* SocketParser.swift in Sources */,
+				46F051E91C489884009BAF1C /* ReplayController.swift in Sources */,
+				4688E3111C5688FB0005D3E9 /* SetupController.swift in Sources */,
 				287894CA1C0B7591003E7445 /* SocketStringReader.swift in Sources */,
+				4688E3261C59647A0005D3E9 /* SlideDownNavigationSegue.swift in Sources */,
 				287894CB1C0B7591003E7445 /* SocketTypes.swift in Sources */,
 				287894CC1C0B7591003E7445 /* SwiftRegex.swift in Sources */,
 				287894CD1C0B7591003E7445 /* WebSocket.swift in Sources */,
+				4688E3171C57DC800005D3E9 /* PerceptionViewController.swift in Sources */,
 				287894681C0A6579003E7445 /* ViewController.swift in Sources */,
+				4688E3241C5962880005D3E9 /* SlideUpNavigationSegue.swift in Sources */,
 				46F377A01C1675CA00621F79 /* Device.swift in Sources */,
 				287894661C0A6579003E7445 /* AppDelegate.swift in Sources */,
+				464322571C53F84E00FA8908 /* Setting.swift in Sources */,
+				4688E30E1C5404780005D3E9 /* SettingCell.swift in Sources */,
 				2878949E1C0B6F55003E7445 /* Position.swift in Sources */,
 				287894A21C0B744C003E7445 /* PositionViewController.swift in Sources */,
+				4688E31B1C592E7B0005D3E9 /* AddDeviceTableViewController.swift in Sources */,
 				287894A01C0B7047003E7445 /* LogoutViewController.swift in Sources */,
+				4688E3151C56CDCB0005D3E9 /* CalibrationViewController.swift in Sources */,
+				46F051E71C458FBA009BAF1C /* CancelSegue.swift in Sources */,
 				46F3779E1C165E1200621F79 /* LoginSegue.swift in Sources */,
 				2842ECD41C0CCE14003F2F65 /* DisplayOnlyViewController.swift in Sources */,
+				464322511C53444E00FA8908 /* IndicatorCanvas.swift in Sources */,
 				2842ECD21C0CCCA8003F2F65 /* LoginViewController.swift in Sources */,
 				2878949C1C0B6F4E003E7445 /* DrawingCanvas.swift in Sources */,
 			);
@@ -577,14 +702,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mary McDavitt (NU6LVY7KNV)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WiTrackApp/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = WiTrackApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.mit.WiTrackApp;
+				PRODUCT_BUNDLE_IDENTIFIER = witrack.Emerald;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "232bb9dc-2858-4395-a495-ebdbff4896f2";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Debug;
 		};
@@ -592,14 +720,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mary McDavitt (NU6LVY7KNV)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WiTrackApp/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = WiTrackApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.mit.WiTrackApp;
+				PRODUCT_BUNDLE_IDENTIFIER = witrack.Emerald;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "232bb9dc-2858-4395-a495-ebdbff4896f2";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};

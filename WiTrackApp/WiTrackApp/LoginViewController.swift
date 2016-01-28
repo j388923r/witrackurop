@@ -45,19 +45,23 @@ class LoginViewController: UIViewController {
         
         Alamofire.request(.POST, "https://www.devemerald.com/api/v1/token/generate", parameters: parameters)
             .responseJSON { [weak self] response in
-                let data = response.result.value! as! NSDictionary
-                if data["success"]! as! NSObject == 1 {
-                    self!.errorLabel.text = ""
-                    self!.token = data["data"]!["token"] as! String
-                    self!.userId = data["data"]!["user"] as! Int
-                    
-                    self!.saveCredentials()
-                    
-                    self!.getDevices(self!.token)
+                if let val = response.result.value {
+                    let data = val as! NSDictionary
+                    if data["success"]! as! NSObject == 1 {
+                        self!.errorLabel.text = ""
+                        self!.token = data["data"]!["token"] as! String
+                        self!.userId = data["data"]!["user"] as! Int
+                        
+                        self!.saveCredentials()
+                        
+                        self!.getDevices(self!.token)
+                    } else {
+                        self!.errorLabel.text = "Username and/or password incorrect.\nPlease try again."
+                    }
+                    print("STOP")
                 } else {
-                    self!.errorLabel.text = "Username and/or password incorrect.\nPlease try again."
+                    self!.errorLabel.text = "Unable to get devices for this user. Server may be unavailable."
                 }
-                print("STOP")
         }
     }
 
@@ -68,27 +72,31 @@ class LoginViewController: UIViewController {
         
         Alamofire.request(.POST, "https://www.devemerald.com/api/v1/user/devices", headers: header)
             .responseJSON { [weak self] response in
-                let data = response.result.value! as! NSDictionary
-                print(data)
-                if data["success"]! as! NSObject == 1 {
-                    let devices = data["data"]! as! [AnyObject]
-                    for i in 0...devices.count - 1 {
-                        let device = devices[i]
+                if let val = response.result.value {
+                    let data = val as! NSDictionary
+                    print(data)
+                    if data["success"]! as! NSObject == 1 {
+                        let devices = data["data"]! as! [AnyObject]
+                        for i in 0...devices.count - 1 {
+                            let device = devices[i]
+                            
+                            let id = device["id"] as! Int
+                            let realtime_access = device["realtimeAccess"] as! Int
+                            let setup_id = device["setupId"] as! Int
+                            let setup_title = device["setupTitle"] as! String
+                            let title = device["title"] as! String
+                            
+                            let newDevice = Device(id: id, realtime_access: realtime_access, setup_id: setup_id, setup_title: setup_title, title: title)
+                            
+                            self!.devices.append(newDevice)
+                        }
                         
-                        let id = device["id"] as! Int
-                        let realtime_access = device["realtimeAccess"] as! Int
-                        let setup_id = device["setupId"] as! Int
-                        let setup_title = device["setupTitle"] as! String
-                        let title = device["title"] as! String
-                        
-                        let newDevice = Device(id: id, realtime_access: realtime_access, setup_id: setup_id, setup_title: setup_title, title: title)
-                        
-                        self!.devices.append(newDevice)
+                        self?.performSegueWithIdentifier("loginSegue", sender: self)
+                    } else {
+                        self!.errorLabel.text = "Username and/or password incorrect."
                     }
-                    
-                    self?.performSegueWithIdentifier("loginSegue", sender: self)
                 } else {
-                    self!.errorLabel.text = "Username and/or password incorrect."
+                    self!.errorLabel.text = "Unable to get devices for this user. Server may be unavailable."
                 }
         }
     }
@@ -99,7 +107,7 @@ class LoginViewController: UIViewController {
         let signin = SignInInfo(token: token, userId: userId)
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(signin!, toFile: SignInInfo.ArchiveURL.path!)
         if !isSuccessfulSave {
-            print("Failed to save meals...")
+            print("Failed to save credentials...")
         }
     }
     

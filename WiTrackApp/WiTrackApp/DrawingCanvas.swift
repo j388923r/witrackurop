@@ -22,7 +22,12 @@ class DrawingCanvas: UIView {
     var positionHistory : [(x:Float, y:Float)] = []
     var positionHistories = [Int: [(x:Float, y:Float)]]()
     
-    var colorWheel : [UIColor] = [UIColor.redColor(), UIColor.purpleColor(), UIColor.grayColor(), UIColor.greenColor(), UIColor.blackColor(), UIColor.blueColor(), UIColor.brownColor(), UIColor.cyanColor(), UIColor.yellowColor(), UIColor.orangeColor(), UIColor.magentaColor(), UIColor.lightGrayColor(), UIColor.darkGrayColor()]
+    var colorWheel : [UIColor] = [UIColor.orangeColor(), UIColor.redColor(), UIColor.purpleColor(), UIColor.grayColor(), UIColor.greenColor(), UIColor.blackColor(), UIColor.blueColor(), UIColor.brownColor(), UIColor.cyanColor(), UIColor.yellowColor(),  UIColor.magentaColor(), UIColor.lightGrayColor(), UIColor.darkGrayColor()]
+    
+    var tracking : Bool = false
+    var trackingId : Int = -1
+    
+    var emptyCanvasMessage : String = "No objects detected."
     
     // An empty implementation adversely affects performance during animation.
     override func drawRect(rect: CGRect) {  
@@ -30,9 +35,16 @@ class DrawingCanvas: UIView {
         //drawPath(pathHistory)
         //drawTail(positionHistory)
         //drawSpot(currentPoint)
+        
+        if(tracking) {
+            let background = UIBezierPath(rect: CGRectMake(0, 0, frame.size.width, frame.size.height))
+            UIColor.blackColor().setFill()
+            background.fill()
+        }
+        
         drawSpots(currentPoints)
+        
         if currentPoints.count < 1 {
-            let s = "No objects detected."
             
             // set the text color to dark gray
             let fieldColor: UIColor = UIColor.darkGrayColor()
@@ -41,20 +53,20 @@ class DrawingCanvas: UIView {
             let fieldFont = UIFont(name: "Helvetica Neue", size: 18)
             
             // set the line spacing to 6
-            var paraStyle = NSMutableParagraphStyle()
+            let paraStyle = NSMutableParagraphStyle()
             paraStyle.lineSpacing = 6.0
             
             // set the Obliqueness to 0.1
-            var skew = 0.1
+            let skew = 0.1
             
-            var attributes: NSDictionary = [
+            let attributes: NSDictionary = [
                 NSForegroundColorAttributeName: fieldColor,
                 NSParagraphStyleAttributeName: paraStyle,
                 NSObliquenessAttributeName: skew,
                 NSFontAttributeName: fieldFont!
             ]
             
-            s.drawInRect(CGRectMake(frame.size.width / 4, frame.size.height / 4, frame.size.width * 3 / 10, frame.size.height * 3 / 10), withAttributes: attributes as! [String : AnyObject])
+            emptyCanvasMessage.drawInRect(CGRectMake(frame.size.width / 4, frame.size.height / 4, frame.size.width * 3 / 10, frame.size.height * 3 / 10), withAttributes: attributes as? [String : AnyObject])
         }
     }
     
@@ -62,11 +74,7 @@ class DrawingCanvas: UIView {
         // print("Moving")
         currentPoint = point
         currentPoints[personId] = point
-        /*if currentPoints.keys.contains(personId) {
-            currentPoints[personId]!.append(point)
-        } else {
-            currentPoints[personId] = [point]
-        }*/
+        
         positionHistory.append((x: point.x, y: point.y))
         if positionHistories.keys.contains(personId) {
             positionHistories[personId]!.append((x: point.x, y: point.y))
@@ -79,6 +87,11 @@ class DrawingCanvas: UIView {
         } else {
             pathHistories[personId] = [(x: point.x, y: point.y)]
         }
+        setNeedsDisplay()
+    }
+    
+    func setBlankCanvasMessage( message : String ) {
+        self.emptyCanvasMessage = message
         setNeedsDisplay()
     }
     
