@@ -35,7 +35,7 @@ public class ViewControllerActivity extends AppCompatActivity {
         setContentView(R.layout.view_controller_layout);
 
         Intent sender = getIntent();
-        token = sender.getStringExtra("token");
+        token = sender.getStringExtra(getString(R.string.token));
         title = sender.getStringExtra("deviceTitle");
         setupTitle = sender.getStringExtra("deviceSetupTitle");
         deviceId = sender.getIntExtra("deviceId", -1);

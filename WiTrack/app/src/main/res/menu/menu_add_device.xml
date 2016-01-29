@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" tools:context=".DeviceSelectorActivity">
-    <item android:id="@+id/action_cancel" android:title="Cancel"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".AddDeviceListActivity">
+    <item android:id="@+id/action_cancel" android:title="Save"
         android:orderInCategory="100" app:showAsAction="always" />
 </menu>

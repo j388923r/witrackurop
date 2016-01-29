@@ -25,6 +25,7 @@ public class SettingsAdapter extends BaseExpandableListAdapter {
     ArrayList<Setting> alerts;
     ArrayList<Setting> stats;
     ArrayList<Setting> tracking;
+    ArrayList<Setting> misc;
 
     Context _context;
 
@@ -33,6 +34,7 @@ public class SettingsAdapter extends BaseExpandableListAdapter {
         alerts = new ArrayList<Setting>();
         stats = new ArrayList<Setting>();
         tracking = new ArrayList<Setting>();
+        misc = new ArrayList<Setting>();
 
         loadSettings();
     }
@@ -46,6 +48,8 @@ public class SettingsAdapter extends BaseExpandableListAdapter {
         tracking.add(new Setting("Large Multicoloring", "Off"));
         tracking.add(new Setting("3D Height View", "Off"));
         tracking.add(new Setting("External Visibility", "Off"));
+
+        misc.add(new Setting("Metric Units", "On"));
     }
 
     @Override
@@ -62,6 +66,8 @@ public class SettingsAdapter extends BaseExpandableListAdapter {
                 return stats.size();
             case 2:
                 return tracking.size();
+            case 3:
+                return misc.size();
         }
         return 0;
     }
@@ -75,6 +81,8 @@ public class SettingsAdapter extends BaseExpandableListAdapter {
                 return "Statistics";
             case 2:
                 return "Tracking";
+            case 3:
+                return "Miscellaneous";
         }
         return null;
     }
@@ -88,6 +96,8 @@ public class SettingsAdapter extends BaseExpandableListAdapter {
                 return stats.get(i1);
             case 2:
                 return tracking.get(i1);
+            case 3:
+                return misc.get(i1);
         }
 
         return null;

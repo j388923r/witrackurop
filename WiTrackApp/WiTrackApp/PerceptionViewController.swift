@@ -32,6 +32,15 @@ class PerceptionViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    func track(positions : [Position]) {
+        self.positions = positions
+        if tracking {
+            print("CREATE ROOMS")
+        } else {
+            canvas.update(positions)
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

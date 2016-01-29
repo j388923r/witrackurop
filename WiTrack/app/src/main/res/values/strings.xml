@@ -5,6 +5,8 @@
     <string name="action_settings">Settings</string>
     <string name="token">token</string>
     <string name="userId">userId</string>
+    <string name="OK">OK</string>
+    <string name="Cancel">Cancel</string>
     <string name="title_activity_device_selector">DeviceSelectorActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
@@ -100,6 +102,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_settings">Settings</string>
-    <string name="title_activity_tutorial">TutorialActivity</string>
-    <string name="title_activity_add_device_list">AddDeviceListActivity</string>
+    <string name="title_activity_tutorial">Setup</string>
+    <string name="title_activity_add_device_list">Add Devices</string>
 </resources>

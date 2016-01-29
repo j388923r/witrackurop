@@ -1,5 +1,6 @@
 package com.example.j388923r.witrack;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,9 @@ public class TutorialActivity extends ActionBarActivity {
     TutorialPager vcPager;
     ViewPager vPager;
 
+    String token, title, setupTitle;
+    int deviceId, deviceSetupId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +31,13 @@ public class TutorialActivity extends ActionBarActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.tutorial_toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Tutorial");
+
+        Intent sender = getIntent();
+        token = sender.getStringExtra(getString(R.string.token));
+        title = sender.getStringExtra("deviceTitle");
+        setupTitle = sender.getStringExtra("deviceSetupTitle");
+        deviceId = sender.getIntExtra("deviceId", -1);
+        deviceSetupId = sender.getIntExtra("deviceSetupId", -1);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tutorial_tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Intro"));

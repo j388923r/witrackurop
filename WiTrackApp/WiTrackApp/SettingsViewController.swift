@@ -13,8 +13,9 @@ class SettingsViewController: UITableViewController {
     var alerts = [Setting]()
     var stats = [Setting]()
     var tracking = [Setting]()
+    var misc = [Setting]()
     
-    let sections = ["Alerts", "Statistics", "Tracking"]
+    let sections = ["Alerts", "Statistics", "Tracking", "Miscellaneous"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,10 +39,12 @@ class SettingsViewController: UITableViewController {
         tracking.append(Setting(display: "Large Multicoloring", state: "Off"))
         tracking.append(Setting(display: "3D Height View", state: "Off"))
         tracking.append(Setting(display: "External Visibility", state: "Off"))
+        
+        misc.append(Setting(display: "Metric Units", state: "On"))
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -57,6 +60,8 @@ class SettingsViewController: UITableViewController {
                 return stats.count
             case 2:
                 return tracking.count
+            case 3:
+                return misc.count
             default:
                 return 0
         }
@@ -78,6 +83,8 @@ class SettingsViewController: UITableViewController {
             case 2:
                 setting = tracking[indexPath.row]
                 break
+            case 3:
+                setting = misc[indexPath.row]
             default:
                 setting = Setting(display: "", state: "")
         }

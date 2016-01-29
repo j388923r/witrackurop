@@ -48,7 +48,7 @@ public class DeviceSelectorActivity extends AppCompatActivity implements Util.As
         super.onCreate(savedInstanceState);
         setContentView(R.layout.device_selector_layout);
 
-        token = getIntent().getStringExtra("token");
+        token = getIntent().getStringExtra(getString(R.string.token));
         userId = getIntent().getIntExtra("userId", -1);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.devicestoolbar);

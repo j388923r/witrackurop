@@ -42,7 +42,7 @@ class AddDeviceTableViewController: UITableViewController {
                 }
             }
             if !saved {
-                if device.id != 2 && device.setup_title != ""{
+                if device.id != 2 && device.setup_title != "" {
                     setupDevices.append(device)
                 } else {
                     brandNewDevices.append(device)
@@ -165,7 +165,7 @@ class AddDeviceTableViewController: UITableViewController {
                 self.presentViewController(removeAlert, animated: true, completion: nil)
             case 1:
                 let selectedDevice = setupDevices[indexPath.row]
-                let saveAlert = UIAlertController(title: "Save Device?", message: "Are you sure you would like to save \(selectedDevice.title) to your phone?", preferredStyle: UIAlertControllerStyle.Alert)
+                let saveAlert = UIAlertController(title: "Save Device?", message: "Would like to save \(selectedDevice.title) to your phone?", preferredStyle: UIAlertControllerStyle.Alert)
                 saveAlert.addAction(UIAlertAction(title: "Save", style: .Default, handler: {(alert: UIAlertAction!) in
                     print("saved")
                     let savedDevice = self.setupDevices.removeAtIndex(indexPath.row)
@@ -176,7 +176,7 @@ class AddDeviceTableViewController: UITableViewController {
                 self.presentViewController(saveAlert, animated: true, completion: nil)
             case 2:
                 deviceToSetup = brandNewDevices[indexPath.row]
-                let setupAlert = UIAlertController(title: "Setup Device?", message: "Are you sure you would like to setup Device \(deviceToSetup.title) now?", preferredStyle: UIAlertControllerStyle.Alert)
+                let setupAlert = UIAlertController(title: "Setup Device?", message: "Would like to setup Device \(deviceToSetup.title) now?", preferredStyle: UIAlertControllerStyle.Alert)
                 setupAlert.addAction(UIAlertAction(title: "Setup", style: .Default, handler: {(alert: UIAlertAction!) in
                     self.setupAgreed = true
                 }))

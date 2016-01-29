@@ -27,7 +27,7 @@ class SetupController: UIViewController, UIPageViewControllerDataSource, UIPageV
         
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MyPageViewController") as! UIPageViewController
         
-        self.pageViewController.dataSource = self
+        // self.pageViewController.dataSource = self
         self.pageViewController.delegate = self
         
         let initial0 = self.storyboard?.instantiateViewControllerWithIdentifier("CalibrationViewController") as! CalibrationViewController
@@ -37,7 +37,7 @@ class SetupController: UIViewController, UIPageViewControllerDataSource, UIPageV
         initial0.socket = socket
         
         initial0.socket!.on("frames") {data, ack in
-            print("data", data)
+            //print("data", data)
             if data.count > 0 {
                 var positions = [Position]()
                 let frame = data[0] as! NSMutableDictionary
@@ -53,6 +53,10 @@ class SetupController: UIViewController, UIPageViewControllerDataSource, UIPageV
                             if (initial0.detectEvent()) {
                                 initial0.canvas.setIndication(true)
                                 initial0.nextStage()
+                                if initial0.stage == 3 {
+                                    self.socket.off("frames")
+                                    self.slideToPerception(initial0.trackingId)
+                                }
                             }
                         }
                     } else {
@@ -141,6 +145,7 @@ class SetupController: UIViewController, UIPageViewControllerDataSource, UIPageV
         }
         
     }
+
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController?
     {
@@ -207,6 +212,46 @@ class SetupController: UIViewController, UIPageViewControllerDataSource, UIPageV
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func slideToPerception(trackingId : Int) {
+        let initial1 = self.storyboard?.instantiateViewControllerWithIdentifier("PerceptionViewController") as! PerceptionViewController
+        
+        initial1.socket = socket
+        initial1.tracking = true
+        initial1.trackingId = trackingId
+        
+        initial1.socket.on("frames") {data, ack in
+            //print("data", data)
+            if data.count > 0 {
+                var positions = [Position]()
+                let frame = data[0] as! NSMutableDictionary
+                let personList = frame["people"] as! NSArray
+                if personList.count > 0 {
+                    if initial1.tracking && initial1.trackingId >= 0{
+                        for k in 0...personList.count - 1 {
+                            let p = personList[k] as! NSMutableDictionary
+                            if (p["personId"]! as! Int) == initial1.trackingId {
+                                let pos = Position(x: (p["x"]! as! Float - initial1.minX) * Float(initial1.canvas.frame.size.width) / (initial1.maxX - initial1.minX), y: (p["y"]! as! Float - initial1.minY) * Float(initial1.canvas.frame.size.height) / (initial1.maxY - initial1.minY), z: p["z"]! as! Float, personId: p["personId"]! as! Int)
+                                positions.append(pos)
+                            }
+                        }
+                    } else {
+                        for k in 0...personList.count - 1 {
+                            let p = personList[k] as! NSMutableDictionary
+                            let pos = Position(x: (p["x"]! as! Float - initial1.minX) * Float(initial1.canvas.frame.size.width) / (initial1.maxX - initial1.minX), y: (p["y"]! as! Float - initial1.minY) * Float(initial1.canvas.frame.size.height) / (initial1.maxY - initial1.minY), z: p["z"]! as! Float, personId: p["personId"]! as! Int)
+                            positions.append(pos)
+                        }
+                    }
+                    initial1.track(positions)
+                }
+            }
+            
+            let viewControllers = [initial1]
+            
+            self.pageViewController.setViewControllers(viewControllers as [UIViewController]?, direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+        }
     }
 
 }
